@@ -3,6 +3,7 @@
 *.dmb
 *.zip
 *.db
+*.pyc
 
 ENV/
 env/
