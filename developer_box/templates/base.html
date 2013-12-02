@@ -1,9 +1,16 @@
 {% load staticfiles %}
+{% load compress %}
 <!DOCTYPE html>
 <html>
 <head>
 
+{% compress css %}
 <link type="text/css" rel="stylesheet" href="{% static 'css/pygments.css' %}">
+{% endcompress %}
+
+{% compress js %}
+
+{% endcompress %}
 </head>
 <body>
 

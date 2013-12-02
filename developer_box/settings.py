@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'registration',
     'developer_box',
     'django.contrib.admin',
+    'compressor',
+    'debug_toolbar',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -89,3 +91,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
