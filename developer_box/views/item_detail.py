@@ -3,7 +3,7 @@ from django.views.generic import DetailView
 from developer_box.models import Item
 
 class ItemDetailView(DetailView):
-	template_name = "items/detail.html"
+	template_name = "item/detail.html"
 	context_object_name = "item"
 	model = Item
 
