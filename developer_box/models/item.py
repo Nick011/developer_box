@@ -1,3 +1,6 @@
+from pygments import highlight
+from pygments.lexers import guess_lexer
+from pygments.formatters import HtmlFormatter
 from django.db import models
 from django.contrib.auth.models import User
 from tag import Tag
@@ -15,6 +18,11 @@ class Item(models.Model):
 
 	class Meta:
 		app_label = "developer_box"
+
+	def highlight_script(self):
+		lexer = guess_lexer(self.script, stripall=True)
+		formatter = HtmlFormatter(linenos=True, cssclass="source")
+		return highlight(self.script, lexer, formatter)
 
 	def __unicode__(self):
 		return self.title

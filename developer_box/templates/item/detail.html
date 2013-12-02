@@ -7,6 +7,12 @@
 <li>Title: {{ item.title }}</li>
 <li>Body: {{ item.body }}</li>
 <li>Script: {{ item.script }}</li>
+<li>
+	Script Highlight: 
+	<div class="highlight">
+		{{ item.highlight_script|safe }}
+	</div>
+</li>
 <li>Created At: {{ item.created_at }}</li>
 <li>Tags: {{ item.tag.all }}</li>
 </ul>
