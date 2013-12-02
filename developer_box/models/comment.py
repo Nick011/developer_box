@@ -7,5 +7,8 @@ class Comment(models.Model):
 	body = models.TextField(blank=False, null=False, )
 	created_at = models.DateTimeField(auto_now=True)
 
+	class Meta:
+		app_label = "developer_box"
+
 	def __unicode__(self):
-		return
+		return self.title

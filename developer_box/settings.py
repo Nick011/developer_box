@@ -24,13 +24,16 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+TEMPLATE_DIRS = (
+     os.path.join(BASE_DIR, 'templates'),
+)
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -38,8 +41,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'registration',
+    'profiles',
     'developer_box',
+    'django.contrib.admin',
 )
+
+ACCOUNT_ACTIVATION_DAYS = 7
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

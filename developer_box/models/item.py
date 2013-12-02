@@ -12,5 +12,8 @@ class Item(models.Model):
 	last_updated_at = models.DateTimeField(auto_now=True, auto_now_add=True)
 	last_viewed_at = models.DateTimeField(auto_now=True, auto_now_add=True)
 
+	class Meta:
+		app_label = "developer_box"
+
 	def __unicode__(self):
 		return self.title
