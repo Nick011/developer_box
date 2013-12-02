@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
 	user = models.ForeignKey(User)
+	#bio = models.TextField()
 	#website = models.URLField()
 	#github = models.URLField()
 	#twitter = models.URLField()
