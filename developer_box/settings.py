@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'registration',
-    'profiles',
     'developer_box',
     'django.contrib.admin',
 )

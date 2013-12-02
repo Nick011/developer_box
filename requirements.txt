@@ -1,4 +1,5 @@
 Django==1.6
+Pillow==2.2.1
 South==0.8.4
+-e hg+https://bitbucket.org/ubernostrum/django-registration/@8f242e35ef7c004e035e54b4bb093c32bf77c29f#egg=django_registration-dev
 wsgiref==0.1.2
--e hg+https://bitbucket.org/ubernostrum/django-registration/#egg=django_registration
