@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from tag import Tag
 
 class Item(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL)
 	tag = models.ManyToManyField(Tag)
 	title = models.CharField(max_length=75, blank=False, null=False)
 	body = models.TextField(blank=False, null=False)
