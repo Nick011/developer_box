@@ -5,4 +5,3 @@ class ItemListView(ListView):
 	template_name = "item/list.html"
 	context_object_name = "item_list"
 	model = Item
-
