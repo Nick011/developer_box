@@ -13,7 +13,7 @@
                   <div class="wrapper">
                     <div class="clearfix m-b">
                       <a href="#" class="pull-left thumb m-r">
-                        <img src="images/nick.jpg" class="img-circle">
+                        <img src="{% static 'images/nick.jpg' %}" class="img-circle">
                       </a>
                       <div class="clear">
                         <div class="h3 m-t-xs m-b-xs text-info">@nick</div>
