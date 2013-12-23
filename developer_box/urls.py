@@ -12,7 +12,7 @@ urlpatterns = patterns('',
   url(r'^admin/', include(admin.site.urls)),
   url(r'^accounts/', include('registration.backends.default.urls')),
   
-  url(r'^$', IndexView.as_view()),
+  url(r'^$', IndexView.as_view(), name='home'),
   url(r'^items/$', ItemListView.as_view(), name='item-list'),
   url(r'^item/create/$', ItemCreateView.as_view(), name='item-create'),
   url(r'^item/(?P<slug>[\w-]+)/$', ItemDetailView.as_view(), name='item-detail'),
