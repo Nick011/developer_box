@@ -16,6 +16,7 @@ urlpatterns = patterns('',
   url(r'^items/$', ItemListView.as_view(), name='item-list'),
   url(r'^item/create/$', ItemCreateView.as_view(), name='item-create'),
   url(r'^item/(?P<slug>[\w-]+)/$', ItemDetailView.as_view(), name='item-detail'),
+  url(r'^accounts/profile/$', ProfileDetailView.as_view(), name='profile-edit'),
   url(r'^profile/$', ProfileDetailView.as_view(), name='profile-detail'),
   url(r'^dashboard/$', DashboardView.as_view(), name='dashboard')
 )

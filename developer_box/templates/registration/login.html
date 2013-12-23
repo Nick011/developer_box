@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load compress %}
+{% load form_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +8,12 @@
 	<title>Beta</title>
 	<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" href="{% 'css/bootstrap.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% 'css/animate.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% 'css/font-awesome.min.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% 'css/font.css' %}" type="text/css" cache="false" />
-	<link rel="stylesheet" href="{% 'css/plugin.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% 'css/app.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font.css' %}" type="text/css" cache="false" />
+	<link rel="stylesheet" href="{% static 'css/plugin.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
   <!--[if lt IE 9]>
     <script src="%{ static 'js/ie/respond.min.js' %}" cache="false"></script>
     <script src="%{ static 'js/ie/html5.js' %}" cache="false"></script>
@@ -28,25 +29,14 @@
 					<header class="panel-heading text-center">
 						Sign in
 					</header>
-					<form action="index.html" class="panel-body">
-						<div class="form-group">
-							<label class="control-label">Email</label>
-							<input type="email" placeholder="test@example.com" class="form-control">
-						</div>
-						<div class="form-group">
-							<label class="control-label">Password</label>
-							<input type="password" id="inputPassword" placeholder="Password" class="form-control">
-						</div>
-						<div class="checkbox">
-							<label>
-								<input type="checkbox"> Keep me logged in
-							</label>
-						</div>
+					<form action="" method="post" class="panel-body">
+						{% csrf_token %}
+						{{ form|as_template }}
 						<a href="#" class="pull-right m-t-xs"><small>Forgot password?</small></a>
 						<button type="submit" class="btn btn-info">Sign in</button>
 						<div class="line line-dashed"></div>
 						<p class="text-muted text-center"><small>Do not have an account?</small></p>
-						<a href="signup.php" class="btn btn-facebook btn-block m-b-sm">Create an account</a>
+						<a href="{% url 'registration_register' %}" class="btn btn-facebook btn-block m-b-sm">Create an account</a>
 					</form>
 				</section>
 			</div>
