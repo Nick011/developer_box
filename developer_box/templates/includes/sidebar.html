@@ -10,51 +10,18 @@
       <section>
         <section id="mail-nav" class="hidden-xs">
           <ul class="nav nav-pills nav-stacked no-radius m-t-sm">
-            <li class="padder dk text-sm l-h-2x">
-              <p>Toolbox</p>
-            </li>
+          <li class="padder dk text-sm l-h-2x">
+            <p>Toolbox</p>
+          </li>
+          {% for bucket in buckets %}
             <li>
               <a href="#">
-                <i class="icon-circle pull-right m-t-xs"></i>
-                All 
+              {# TODO: needs {{ bucket.color }} in the icon class #}
+              <i class="icon-circle text-success pull-right m-t-xs"></i>
+              {{ bucket.title }}
               </a>
             </li>
-            <li>
-              <a href="#">
-                <i class="icon-circle text-danger pull-right m-t-xs"></i>
-                Python
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="icon-circle pull-right m-t-xs"></i>
-                PHP 
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="icon-circle text-danger pull-right m-t-xs"></i>
-                Codeigniter
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="icon-circle text-success pull-right m-t-xs"></i>
-                JQuery
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="icon-circle pull-right m-t-xs"></i>
-                HTML/CSS
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="icon-circle text-success pull-right m-t-xs"></i>
-                Javascript
-              </a>
-            </li>
+          {% endfor %}
           </ul>
         </section>
       </section>
