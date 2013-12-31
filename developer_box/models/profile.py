@@ -2,13 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-	user = models.ForeignKey(User)
-	bio = models.TextField()
-	website = models.URLField()
-	github = models.URLField()
-	twitter = models.URLField()
-	linkedin = models.URLField()
-	stackoverflow = models.URLField()
+	user = models.OneToOneField(User)
+	bio = models.TextField(blank=False, null=False)
+	website = models.URLField(blank=False, null=False)
+	github = models.URLField(blank=False, null=False)
+	twitter = models.URLField(blank=False, null=False)
+	linkedin = models.URLField(blank=False, null=False)
+	stackoverflow = models.URLField(blank=False, null=False)
 	#image = models.ImageField(blank=True, null=True)
 	#thumb = models.ImageField(blank=True, null=True)
 
@@ -16,4 +16,4 @@ class Profile(models.Model):
 		app_label = "developer_box"
 
 	def __unicode__(self):
-		return self.title
+		return self.user.username

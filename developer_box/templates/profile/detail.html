@@ -18,7 +18,7 @@
                     <img src="{% static 'images/nick.jpg' %}" class="img-circle">
                   </a>
                   <div class="clear">
-                    <div class="h3 m-t-xs m-b-xs text-info">@nick</div>
+                    <div class="h3 m-t-xs m-b-xs text-info">@{{ profile.user }}</div>
                     <small class="text-muted"><i class="icon-map-marker"></i> Tampa, FL</small>
                   </div>                
                 </div>
@@ -52,13 +52,13 @@
                 </div>
                 <div>
                   <small class="text-uc text-xs text-muted">About Me</small>
-                  <p>I do Verifip things because that's what's super good for most good internets please have cat's now.</p>
+                  <p>{{ profile.bio }}</p>
                   <small class="text-uc text-xs text-muted">info</small>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
                   <div class="line"></div>
                   <small class="text-uc text-xs text-muted">connection</small>
                   <p class="m-t-sm">
-                    <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="icon-twitter"></i></a>
+                    <a href="{{ profile.twitter }}" class="btn btn-rounded btn-twitter btn-icon"><i class="icon-twitter"></i></a>
                     <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="icon-facebook"></i></a>
                     <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="icon-google-plus"></i></a>
                   </p>
