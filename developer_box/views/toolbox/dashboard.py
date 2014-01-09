@@ -1,7 +1,8 @@
 from django.views.generic import ListView
 from developer_box.models import Bucket, Item
+from developer_box.mixins import LoginRequired
 
-class DashboardView(ListView):
+class DashboardView(LoginRequired, ListView):
 	template_name = "toolbox/dashboard.html"
 	context_object_name = "items"
 
