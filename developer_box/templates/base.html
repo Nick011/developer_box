@@ -23,7 +23,7 @@
 	{% endcompress %}
 
 </head>
-<body onload="prettyPrint();">
+<body>
 
 	{% include "includes/header.html" %}
 
@@ -43,19 +43,6 @@
   <script src="{% static 'js/jquery.min.js' %}"></script>
 
   <script type="text/javascript" src="{% static 'js/clipboard/jquery.zclip.js' %}"></script>
-  <script>
-  $(document).ready(function(){
-
-    $('a#copy-script').zclip({
-        path:'js/clipboard/ZeroClipboard.swf',
-        copy:$('pre#script').text()
-    });
-
-    // The link with ID "copy-description" will copy
-    // the text of the paragraph with ID "description"
-
-  });
-  </script>
 
   <!-- Bootstrap -->
   <script src="{% static 'js/bootstrap.js' %}"></script>
@@ -67,22 +54,31 @@
   <script src="{% static 'js/fuelux/fuelux.js' %}"></script>
   <script src="{% static 'js/libs/jquery.pjax.js' %}" cache="false"></script>
 
-  <script src="{% 'js/datepicker/bootstrap-datepicker.js' %}"></script>
-  <script src="{% 'js/slider/bootstrap-slider.js' %}"></script>
-  <script src="{% 'js/file-input/bootstrap.file-input.js' %}"></script>
-  <script src="{% 'js/libs/moment.min.js' %}"></script>
-  <script src="{% 'js/combodate/combodate.js' %}" cache="false"></script>
-  <script src="{% 'js/parsley/parsley.min.js' %}" cache="false"></script>
-  <script src="{% 'js/parsley/parsley.extend.js' %}" cache="false"></script>
-  <script src="{% 'js/select2/select2.min.js' %}" cache="false"></script>
-  <script src="{% 'js/wysiwyg/jquery.hotkeys.js' %}" cache="false"></script>
-  <script src="{% 'js/wysiwyg/bootstrap-wysiwyg.js' %}" cache="false"></script>
-  <script src="{% 'js/wysiwyg/demo.js' %}" cache="false"></script>
-
+  <script src="{% static 'js/datepicker/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/slider/bootstrap-slider.js' %}"></script>
+  <script src="{% static 'js/file-input/bootstrap.file-input.js' %}"></script>
+  <script src="{% static 'js/libs/moment.min.js' %}"></script>
+  <script src="{% static 'js/combodate/combodate.js' %}" cache="false"></script>
+  <script src="{% static 'js/parsley/parsley.min.js' %}" cache="false"></script>
+  <script src="{% static 'js/parsley/parsley.extend.js' %}" cache="false"></script>
+  <script src="{% static 'js/select2/select2.min.js' %}" cache="false"></script>
+  <script src="{% static 'js/wysiwyg/jquery.hotkeys.js' %}" cache="false"></script>
+  <script src="{% static 'js/wysiwyg/bootstrap-wysiwyg.js' %}" cache="false"></script>
+  <script src="{% static 'js/wysiwyg/demo.js' %}" cache="false"></script>
 
   <script>
     $(function(){
-       $("#e9").select2();
+      PR.prettyPrint();
+      $("#e9").select2();
+      $('a#copy-script').zclip({
+        path:'js/clipboard/ZeroClipboard.swf',
+        copy:$('pre#script').text()
+      });
+
+      $('.prettyprint').on('keyup', function() {
+        //not working, supposed to re-render pretty printed css.
+        PR.prettyPrint();
+      });
     });
   </script>
 
