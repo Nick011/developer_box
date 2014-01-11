@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
 	user = models.OneToOneField(User)
-	bio = models.TextField(blank=False, null=False)
-	website = models.URLField(blank=False, null=False)
-	github = models.URLField(blank=False, null=False)
-	twitter = models.URLField(blank=False, null=False)
-	linkedin = models.URLField(blank=False, null=False)
-	stackoverflow = models.URLField(blank=False, null=False)
+	bio = models.TextField(null=True)
+	website = models.URLField(null=True)
+	github = models.URLField(null=True)
+	twitter = models.URLField(null=True)
+	linkedin = models.URLField(null=True)
+	stackoverflow = models.URLField(null=True)
+	google = models.URLField(null=True)
 	#image = models.ImageField(blank=True, null=True)
 	#thumb = models.ImageField(blank=True, null=True)
 

@@ -11,11 +11,13 @@
   <link rel="stylesheet" href="css/font.css" type="text/css" cache="false" />
   <link rel="stylesheet" href="css/plugin.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-  
+  <link rel="stylesheet" href="js/select2/select2.css" type="text/css" />
+  <link rel="stylesheet" href="js/fuelux/fuelux.css" type="text/css" />
+  <link rel="stylesheet" href="js/datepicker/datepicker.css" type="text/css" />
+  <link rel="stylesheet" href="js/slider/slider.css" type="text/css" />
   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   <link rel="stylesheet" href="css/prettify_tommorowtheme.css" type="text/css" />
 
-  
   <!--[if lt IE 9]>
     <script src="js/ie/respond.min.js" cache="false"></script>
     <script src="js/ie/html5.js" cache="false"></script>

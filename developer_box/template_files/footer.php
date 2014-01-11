@@ -87,6 +87,8 @@
 });
   
   </script>
+
+
   
   <!-- Bootstrap -->
   <script src="js/bootstrap.js"></script>
@@ -97,5 +99,37 @@
   <!-- Fuelux -->
   <script src="js/fuelux/fuelux.js"></script>
   <script src="js/libs/jquery.pjax.js" cache="false"></script>
+
+    <!-- fuelux -->
+  <script src="js/fuelux/fuelux.js"></script>
+  <!-- datepicker -->
+  <script src="js/datepicker/bootstrap-datepicker.js"></script>
+  <!-- slider -->
+  <script src="js/slider/bootstrap-slider.js"></script>
+  <!-- file input -->  
+  <script src="js/file-input/bootstrap.file-input.js"></script>
+  <!-- combodate -->
+  <script src="js/libs/moment.min.js"></script>
+  <script src="js/combodate/combodate.js" cache="false"></script>
+  <!-- parsley -->
+  <script src="js/parsley/parsley.min.js" cache="false"></script>
+  <script src="js/parsley/parsley.extend.js" cache="false"></script>
+  <!-- select2 -->
+  <script src="js/select2/select2.min.js" cache="false"></script>
+  <!-- wysiwyg -->
+  <script src="js/wysiwyg/jquery.hotkeys.js" cache="false"></script>
+  <script src="js/wysiwyg/bootstrap-wysiwyg.js" cache="false"></script>
+  <script src="js/wysiwyg/demo.js" cache="false"></script>
+
+
+  <script>
+  $(document).ready(function(){
+
+     $("#e9").select2();
+
+    });
+</script>
+
+
 </body>
 </html>

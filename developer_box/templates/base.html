@@ -15,10 +15,11 @@
   <link rel="stylesheet" href="{% static 'css/font.css' %}" type="text/css" cache="false" />
   <link rel="stylesheet" href="{% static 'css/plugin.css' %}" type="text/css" />
   <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
-
+  <link rel="stylesheet" href="{% static 'js/select2/select2.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'js/fuelux/fuelux.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'js/datepicker/datepicker.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'js/slider/slider.css' %}" type="text/css" />
   <link rel="stylesheet" href="{% static 'css/prettify_tommorowtheme.css' %}" type="text/css" />
-
-	<link type="text/css" rel="stylesheet" href="{% static 'css/pygments.css' %}">
 	{% endcompress %}
 
 </head>
@@ -31,43 +32,61 @@
 	{% include "includes/footer.html" %}
 
 
+  {% compress js %}
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <!--[if lt IE 9]>
+    <script src="{% static 'js/ie/respond.min.js' %}" cache="false"></script>
+    <script src="{% static 'js/ie/html5.js' %}" cache="false"></script>
+    <script src="{% static 'js/ie/fix.js' %}" cache="false"></script>
+  <![endif]-->
 
-{% compress js %}
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
 
-<!--[if lt IE 9]>
-  <script src="{% static 'js/ie/respond.min.js' %}" cache="false"></script>
-  <script src="{% static 'js/ie/html5.js' %}" cache="false"></script>
-  <script src="{% static 'js/ie/fix.js' %}" cache="false"></script>
-<![endif]-->
+  <script type="text/javascript" src="{% static 'js/clipboard/jquery.zclip.js' %}"></script>
+  <script>
+  $(document).ready(function(){
 
-<script src="{% static 'js/jquery.min.js' %}"></script>
+    $('a#copy-script').zclip({
+        path:'js/clipboard/ZeroClipboard.swf',
+        copy:$('pre#script').text()
+    });
 
-<script type="text/javascript" src="{% static 'js/clipboard/jquery.zclip.js' %}"></script>
-<script>
-$(document).ready(function(){
+    // The link with ID "copy-description" will copy
+    // the text of the paragraph with ID "description"
 
-  $('a#copy-script').zclip({
-      path:'js/clipboard/ZeroClipboard.swf',
-      copy:$('pre#script').text()
   });
+  </script>
 
-  // The link with ID "copy-description" will copy
-  // the text of the paragraph with ID "description"
+  <!-- Bootstrap -->
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- App -->
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/app.plugin.js' %}"></script>
+  <script src="{% static 'js/app.data.js' %}"></script>
+  <!-- Fuelux -->
+  <script src="{% static 'js/fuelux/fuelux.js' %}"></script>
+  <script src="{% static 'js/libs/jquery.pjax.js' %}" cache="false"></script>
 
-});
-</script>
+  <script src="{% 'js/datepicker/bootstrap-datepicker.js' %}"></script>
+  <script src="{% 'js/slider/bootstrap-slider.js' %}"></script>
+  <script src="{% 'js/file-input/bootstrap.file-input.js' %}"></script>
+  <script src="{% 'js/libs/moment.min.js' %}"></script>
+  <script src="{% 'js/combodate/combodate.js' %}" cache="false"></script>
+  <script src="{% 'js/parsley/parsley.min.js' %}" cache="false"></script>
+  <script src="{% 'js/parsley/parsley.extend.js' %}" cache="false"></script>
+  <script src="{% 'js/select2/select2.min.js' %}" cache="false"></script>
+  <script src="{% 'js/wysiwyg/jquery.hotkeys.js' %}" cache="false"></script>
+  <script src="{% 'js/wysiwyg/bootstrap-wysiwyg.js' %}" cache="false"></script>
+  <script src="{% 'js/wysiwyg/demo.js' %}" cache="false"></script>
 
-<!-- Bootstrap -->
-<script src="{% static 'js/bootstrap.js' %}"></script>
-<!-- App -->
-<script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/app.plugin.js' %}"></script>
-<script src="{% static 'js/app.data.js' %}"></script>
-<!-- Fuelux -->
-<script src="{% static 'js/fuelux/fuelux.js' %}"></script>
-<script src="{% static 'js/libs/jquery.pjax.js' %}" cache="false"></script>
-{% endcompress %}
+
+  <script>
+    $(function(){
+       $("#e9").select2();
+    });
+  </script>
+
+  {% endcompress %}
 
 </body>
 </html>

@@ -22,7 +22,7 @@
           <a href="#" class="thumb-xs pull-left m-r-sm">
             <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
           </a>
-          <a href="{% url 'item-detail' item.slug %}" class="clear">
+          <a href="{% url 'item-detail' item.id item.slug %}" class="clear">
             <small class="pull-right">
               {% for tag in item.tags.all %}
                 {# TODO: allow click to filter by tag #}

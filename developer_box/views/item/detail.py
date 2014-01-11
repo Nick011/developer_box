@@ -6,7 +6,8 @@ class ItemDetailView(DetailView):
 	template_name = "item/detail.html"
 	context_object_name = "item"
 	model = Item
+	queryset = Item.objects.select_related()
 
-	def get_queryset(self):
-		return get_object_or_404(Item, slug=self.kwargs['slug'])
+	#def get_queryset(self):
+	#	return get_object_or_404(Item, slug=self.kwargs['slug'])
 

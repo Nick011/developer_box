@@ -4,7 +4,7 @@
 <h1>List of Items</h1>
 <ul>
 {% for item in item_list %}
-	<li><a href="{% url 'item-detail' item.slug %}">{{ item.title }}</li>
+	<li><a href="{% url 'item-detail' item.id item.slug %}">{{ item.title }}</li>
 {% endfor %}
 </ul>
 {% endblock %}
