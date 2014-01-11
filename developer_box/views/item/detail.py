@@ -7,6 +7,6 @@ class ItemDetailView(DetailView):
 	context_object_name = "item"
 	model = Item
 
-	#def get_queryset(self):
-		#return get_object_or_404(Item, slug=self.kwargs['slug'])
+	def get_queryset(self):
+		return get_object_or_404(Item, slug=self.kwargs['slug'])
 
