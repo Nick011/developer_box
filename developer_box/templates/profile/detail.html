@@ -18,7 +18,7 @@
                     <img src="{% static 'images/nick.jpg' %}" class="img-circle">
                   </a>
                   <div class="clear">
-                    <div class="h3 m-t-xs m-b-xs text-info">@nick</div>
+                    <div class="h3 m-t-xs m-b-xs text-info">@{{ user }}</div>
                     <small class="text-muted"><i class="icon-map-marker"></i> Tampa, FL</small>
                   </div>                
                 </div>
@@ -26,13 +26,13 @@
                   <div class="row">
                     <div class="col-xs-6">
                       <a href="#">
-                        <span class="m-b-xs h3 block">245</span>
+                        <span class="m-b-xs h3 block">{{ follower_count }}</span>
                         <small class="text-muted">Followers</small>
                       </a>
                     </div>
                     <div class="col-xs-6">
                       <a href="#">
-                        <span class="m-b-xs h3 block">55</span>
+                        <span class="m-b-xs h3 block">{{ following_count }}</span>
                         <small class="text-muted">Following</small>
                       </a>
                     </div>
@@ -79,8 +79,21 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="recent">
                   <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
-
-
+                    {% for item in recently_created %}
+                    <li class="list-group-item">
+                      <a href="#" class="thumb-sm pull-left m-r-sm">
+                      </a>
+                      <a href="#" class="clear">
+                        <small class="pull-right">
+                          {% for tag in item.tag.all %}
+                          <span class="label label-sm bg-danger text-uc">{{ tag.name }}</span>
+                          {% endfor %}
+                        </small>
+                        <strong class="block">{{ item.title }}</strong>
+                        <small>{{ item.description }}</small>
+                      </a>
+                    </li>
+                    {% endfor %}
 
                     <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
