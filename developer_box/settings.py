@@ -39,6 +39,9 @@ INSTALLED_APPS = (
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'django.contrib.sites',
+  'threadedcomments',
+  'django.contrib.comments',
   'south',
   'registration',
   'developer_box',
@@ -46,6 +49,10 @@ INSTALLED_APPS = (
   'compressor',
   'debug_toolbar',
 )
+
+SITE_ID = 1
+
+COMMENTS_APP = 'threadedcomments'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 

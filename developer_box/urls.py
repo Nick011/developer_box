@@ -8,6 +8,7 @@ urlpatterns = patterns('',
   # Examples:
   # url(r'^$', 'developer_box.views.home', name='home'),
   # url(r'^blog/', include('blog.urls')),
+  url(r'^item/comments/', include('django.contrib.comments.urls')),
 
   url(r'^admin/', include(admin.site.urls)),
   url(r'^accounts/', include('registration.backends.default.urls')),

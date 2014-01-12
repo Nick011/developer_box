@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load threadedcomments_tags %}
 
 {% block main %}
 
@@ -68,6 +69,10 @@
 
           <h4 class="m-t-lg m-b">3 Comments</h4>
           <section class="comment-list block">
+
+            {% render_comment_list for item %}
+            {% render_comment_form for item %}
+
             <article id="comment-id-1" class="comment-item">
               <a class="pull-left thumb-sm">
                 <img src="{% static 'images/chris.jpg' %}" class="img-rounded">
@@ -153,7 +158,6 @@
           </button>
           <br><br>
 
-          {% with profile=item.user.profile %}
           <h5 class="font-semibold">About Developer</h5>
           <div class="line line-dashed"></div>
           <div class="m-b-lg">
@@ -170,7 +174,6 @@
           <div class="m-t-sm m-b-lg">
             {% include "includes/social_icons.html" with profile=profile %}
           </div>
-          {% endwith %}
 
           <h5 class="font-semibold">Similar Results (TODO)</h5>
           <div class="line line-dashed"></div>
