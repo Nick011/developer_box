@@ -69,7 +69,8 @@
   <script>
     $(function(){
       PR.prettyPrint();
-      $("#e9").select2();
+      $('#id_tags').select2();
+      $('#id_bucket').select2();
       $('a#copy-script').zclip({
         path:'js/clipboard/ZeroClipboard.swf',
         copy:$('pre#script').text()
@@ -79,6 +80,8 @@
         //not working, supposed to re-render pretty printed css.
         PR.prettyPrint();
       });
+
+      {% block extra_js %}{% endblock %}
     });
   </script>
 

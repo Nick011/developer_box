@@ -1,15 +1,7 @@
 {% extends "base.html" %}
+{% load form_tags %}
 
 {% block main %}
-<!--
-<h1>Create Item</h1>
-<form action="" method="POST">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" id="submit" name="submit" value="Create">
-</form>
--->
-
 <section id="content">
 	<section class="vbox">
 		<header class="header b-b bg-white">
@@ -32,11 +24,16 @@
 								<h2 class="post-title">Create New Toolbox</h2>
 
 								<div class="panel-body">
-									<form class="form-horizontal" method="get">
+									<form class="form-horizontal" method="post" action="">
+										{% csrf_token %}
+										{{ form.non_field_errors }}
+										{{ form.errors }}
+
 										<div class="form-group">
 											<label class="col-sm-2 control-label">What does it do?</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control">
+												{{ form.title|add_class:"form-control" }}
+												{{ form.title.errors }}
 												<span class="help-block m-b-none">What's does it do? Simple title of your script. Ex. "JQuery Distance Between Two Dates Script"</span>
 											</div>
 										</div>
@@ -44,7 +41,11 @@
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Code Snippet</label>
 											<div class="col-sm-10">
+											<!--
 												<textarea id="script" class="prettyprint lang-html" style="width:100%;height:220px;"></textarea>
+											-->
+												{{ form.script|add_class:"prettyprint lang-html" }}
+												{{ form.script.errors }}
 											</div>
 										</div>
 
@@ -63,6 +64,7 @@
 													<div id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px">
 
 													</div>
+													{{ form.description.as_hidden }}
 													<span class="help-block m-b-none">Description of your script and how to use it.</span>
 
 												</div>
@@ -72,50 +74,25 @@
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Tags</label>
 											<div class="col-sm-10">
-
-												<select multiple="" name="e9" id="e9" style="width:100%" class="populate select2-offscreen" tabindex="-1">
-													<optgroup label="Server Side">
-														<option value="AK">PHP</option>
-														<option value="HI">Ruby on Rails</option>
-														<option value="HI">Python</option>
-														<option value="HI">Cold Fusion</option>
-														<option value="HI">ASP.NET</option>
-													</optgroup>
-													<optgroup label="Client Side">
-														<option value="CA">JQuery</option>
-														<option value="NV">Javascript</option>
-														<option value="OR">CoffeeScript</option>
-														<option value="OR">HTML5</option>
-														<option value="OR">CSS</option>
-														<option value="OR">Browser Fixes</option>
-													</optgroup>
-													<optgroup label="Database">
-														<option value="CA">MySQL</option>
-														<option value="NV">SQL</option>
-														<option value="OR">NuDB</option>
-													</optgroup>
+												<select multiple="" name="tags" id="id_tags" style="width:100%" class="populate select2-offscreen" tabindex="-1">
+													{% for val, text in form.tags.field.choices %}
+														<option value="{{ val }}">{{ text }}</option>
+													{% endfor %}
 												</select>
+												{{ form.tags.errors }}
 											</div>
 										</div>
 
 
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Add To Bucket</label>
-											<div class="col-sm-10">              
-
-												<div class="btn-group m-r">
-													<button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle">
-														<span class="dropdown-label" data-placeholder="Please select">Select Bucket</span> 
-														<span class="caret"></span>
-													</button>
-													<ul class="dropdown-menu dropdown-select">
-														<li><a href="#"><input type="checkbox" name="d-s-c-1">PHP</a></li>
-														<li><a href="#"><input type="checkbox" name="d-s-c-2">Ruby on Rails</a></li>
-														<li><a href="#"><input type="checkbox" name="d-s-c-3">Javascript</a></li>
-														<li><a href="#"><input type="checkbox" name="d-s-c-4">JQuery</a></li>
-														<li><a href="#"><input type="checkbox" name="d-s-c-5">Python</a></li>
-													</ul>
-												</div>
+											<div class="col-sm-10">
+												<select name="bucket" id="id_bucket" style="width:100%" class="populate select2-offscreen" tabindex="-2">
+													{% for val, text in form.bucket.field.choices %}
+														<option value="{{ val }}">{{ text }}</option>
+													{% endfor %}
+												</select>
+												{{ form.bucket.errors }}
 											</div>
 										</div>
 										<br>
@@ -130,6 +107,7 @@
 											</div>
 										</div>
 									</div>
+
 								</form>
 							</div>
 
@@ -199,3 +177,10 @@
 <!-- /.vbox -->
 </section>
 {% endblock %}
+
+{% block extra_js %}
+$('form').on('submit', function() {
+	$('#id_description').val($('#editor').html());
+});
+{% endblock %}
+

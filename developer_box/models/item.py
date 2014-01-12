@@ -4,6 +4,7 @@ from pygments.formatters import HtmlFormatter
 from django.db import models
 from django.contrib.auth.models import User
 from tag import Tag
+from django.template.defaultfilters import slugify
 
 class Item(models.Model):
 	user = models.ForeignKey(User)
@@ -19,6 +20,7 @@ class Item(models.Model):
 	class Meta:
 		app_label = "developer_box"
 
+
 	def highlight_script(self):
 		lexer = guess_lexer(self.script, stripall=True)
 		formatter = HtmlFormatter(linenos=True, cssclass="source")
@@ -26,3 +28,9 @@ class Item(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+	def save(self, *args, **kwargs):
+		if not self.id:
+			self.slug = slugify(self.title)
+
+		super(Item, self).save(*args, **kwargs)
