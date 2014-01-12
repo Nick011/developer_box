@@ -74,12 +74,12 @@
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Tags</label>
 											<div class="col-sm-10">
-												<select multiple="" name="tags" id="id_tags" style="width:100%" class="populate select2-offscreen" tabindex="-1">
-													{% for val, text in form.tags.field.choices %}
+												<select multiple="" name="tag" id="id_tag" style="width:100%" class="populate select2-offscreen" tabindex="-1">
+													{% for val, text in form.tag.field.choices %}
 														<option value="{{ val }}">{{ text }}</option>
 													{% endfor %}
 												</select>
-												{{ form.tags.errors }}
+												{{ form.tag.errors }}
 											</div>
 										</div>
 
@@ -179,6 +179,8 @@
 {% endblock %}
 
 {% block extra_js %}
+$('#id_tag').select2();
+$('#id_bucket').select2();
 $('form').on('submit', function() {
 	$('#id_description').val($('#editor').html());
 });

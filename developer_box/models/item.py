@@ -4,11 +4,14 @@ from pygments.formatters import HtmlFormatter
 from django.db import models
 from django.contrib.auth.models import User
 from tag import Tag
+from bucket import Bucket
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 
 class Item(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, null=True)
 	tag = models.ManyToManyField(Tag)
+	bucket = models.ManyToManyField(Bucket)
 	title = models.CharField(max_length=75, blank=False, null=False)
 	description = models.TextField(blank=False, null=False)
 	script = models.TextField(blank=False, null=False)
@@ -20,6 +23,8 @@ class Item(models.Model):
 	class Meta:
 		app_label = "developer_box"
 
+	def get_url(self):
+		return reverse('item-detail', kwargs={'id': self.id, 'slug': self.slug})
 
 	def highlight_script(self):
 		lexer = guess_lexer(self.script, stripall=True)
@@ -30,7 +35,6 @@ class Item(models.Model):
 		return self.title
 
 	def save(self, *args, **kwargs):
-		if not self.id:
-			self.slug = slugify(self.title)
+		self.slug = slugify(self.title)
 
 		super(Item, self).save(*args, **kwargs)

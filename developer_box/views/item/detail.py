@@ -9,5 +9,5 @@ class ItemDetailView(DetailView):
 	queryset = Item.objects.select_related()
 
 	#def get_queryset(self):
-	#	return get_object_or_404(Item, slug=self.kwargs['slug'])
+		#return get_object_or_404(self.model.objects, pk=self.kwargs['id'])
 
