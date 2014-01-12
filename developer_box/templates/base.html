@@ -78,11 +78,10 @@
         //not working, supposed to re-render pretty printed css.
         PR.prettyPrint();
       });
-
-      {% block extra_js %}{% endblock %}
     });
   </script>
 
+  {% block extra_js %}{% endblock %}
   {% endcompress %}
 
 </body>
