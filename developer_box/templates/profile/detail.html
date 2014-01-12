@@ -18,7 +18,7 @@
                     <img src="{% static 'images/nick.jpg' %}" class="img-circle">
                   </a>
                   <div class="clear">
-                    <div class="h3 m-t-xs m-b-xs text-info">@{{ profile.user }}</div>
+                    <div class="h3 m-t-xs m-b-xs text-info">@nick</div>
                     <small class="text-muted"><i class="icon-map-marker"></i> Tampa, FL</small>
                   </div>                
                 </div>
@@ -36,7 +36,7 @@
                         <small class="text-muted">Following</small>
                       </a>
                     </div>
-                    
+
                   </div>
                 </div>
                 <div class="btn-group btn-group-justified m-b">
@@ -48,7 +48,7 @@
                       <i class="icon-eye-open"></i> Following
                     </span>
                   </a>
-                  
+
                 </div>
                 <div>
                   <small class="text-uc text-xs text-muted">About Me</small>
@@ -58,9 +58,7 @@
                   <div class="line"></div>
                   <small class="text-uc text-xs text-muted">connection</small>
                   <p class="m-t-sm">
-                    <a href="{{ profile.twitter }}" class="btn btn-rounded btn-twitter btn-icon"><i class="icon-twitter"></i></a>
-                    <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="icon-facebook"></i></a>
-                    <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="icon-google-plus"></i></a>
+                    {% include 'includes/social_icons.html' with profile=profile %}
                   </p>
                 </div>
               </div>
@@ -81,9 +79,9 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="recent">
                   <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
-                    {% for item in items %}
-                      
-                    {% endfor %}
+
+
+
                     <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
@@ -93,7 +91,7 @@
                         <small>Morbi nec nunc condimentum...</small>
                       </a>
                     </li>
-                    
+
                     <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
@@ -103,7 +101,7 @@
                         <small>Morbi nec nunc c orbi nec orbi necondimentum...</small>
                       </a>
                     </li>
-                    
+
                     <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
@@ -113,8 +111,8 @@
                         <small>404 Fix for this redirect thing i was talking about this one time here ..</small>
                       </a>
                     </li>
-                    
-                          <li class="list-group-item">
+
+                    <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
                       <a href="#" class="clear">
@@ -123,7 +121,7 @@
                         <small>Jquery this and that goes here with that...</small>
                       </a>
                     </li>
-                                <li class="list-group-item">
+                    <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
                       <a href="#" class="clear">
@@ -132,8 +130,8 @@
                         <small>Another good amount of example text goes in this location ..</small>
                       </a>
                     </li>
-                                
-                                      <li class="list-group-item">
+
+                    <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
                       <a href="#" class="clear">
@@ -142,8 +140,8 @@
                         <small>Inner joins go here about this and that ..</small>
                       </a>
                     </li>
-                                      
-                                            <li class="list-group-item">
+
+                    <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
                       <a href="#" class="clear">
@@ -152,8 +150,8 @@
                         <small>404 Fix for this redirect thing i was talking about this one time here ..</small>
                       </a>
                     </li>
-                                            
-                                                  <li class="list-group-item">
+
+                    <li class="list-group-item">
                       <a href="#" class="thumb-sm pull-left m-r-sm">
                       </a>
                       <a href="#" class="clear">
@@ -162,10 +160,10 @@
                         <small>404 Fix for this redirect thing i was talking about this one time here ..</small>
                       </a>
                     </li>
-                                                  
-            
-                    
-    
+
+
+
+
                   </ul>
                 </div>
                 <div class="tab-pane" id="feed">
@@ -174,105 +172,107 @@
                   </div>
                 </div>
                 <div class="tab-pane" id="settings">
-                    
-                    
-                    
-        <div class="tab-content">
-        <section class="tab-pane active" id="basic">
-          <div class="row">
-            <div class="col-sm-12">
-              <section class="panel">
-                <header class="panel-heading font-bold">Social Network Profiles</header>
-                <div class="panel-body">
-                  <form role="form">
-                    <div class="input-group m-b">
-                      <span class="input-group-addon btn-facebook"><i class="icon-facebook"></i></span>
-                      <input type="text" class="form-control" placeholder="Facebook Profile Link">
-                    </div>
-                    <div class="input-group m-b">
-                      <span class="input-group-addon btn-gplus"><i class="icon-google-plus"></i></span>
-                      <input type="text" class="form-control" placeholder="Google Plus Link">
-                    </div>
-                    <div class="input-group m-b">
-                      <span class="input-group-addon btn-twitter"><i class="icon-twitter"></i></span>
-                      <input type="text" class="form-control" placeholder="Twitter Profile Link">
-                    </div>
-                    <div class="input-group m-b">
-                      <span class="input-group-addon btn-info"><i class="icon-linkedin"></i></span>
-                      <input type="text" class="form-control" placeholder="Linkedin Profile Link">
-                    </div>                     
-                    <button type="submit" class="btn btn-sm btn-default">Save Settings</button>
-                  </form>
-                </div>
-              </section>
-            </div>
-          </div>
-        
-        <br>
-        <div class="tab-content">
-        <section class="tab-pane active" id="basic">
-          <div class="row">
-            <div class="col-sm-12">
-              <section class="panel">
-                <header class="panel-heading font-bold">Profile Information</header>
-                <div class="panel-body">
-                  <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">
-                    </div>
-                        
-                         <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name">
-                        </div>
 
-                        <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="City">
+
+
+                  <div class="tab-content">
+                    <section class="tab-pane active" id="basic">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <section class="panel">
+                            <header class="panel-heading font-bold">Social Network Profiles</header>
+                            <div class="panel-body">
+                              <form role="form">
+                                <div class="input-group m-b">
+                                  <span class="input-group-addon btn-facebook"><i class="icon-facebook"></i></span>
+                                  <input type="text" class="form-control" placeholder="Facebook Profile Link">
+                                </div>
+                                <div class="input-group m-b">
+                                  <span class="input-group-addon btn-gplus"><i class="icon-google-plus"></i></span>
+                                  <input type="text" class="form-control" placeholder="Google Plus Link">
+                                </div>
+                                <div class="input-group m-b">
+                                  <span class="input-group-addon btn-twitter"><i class="icon-twitter"></i></span>
+                                  <input type="text" class="form-control" placeholder="Twitter Profile Link">
+                                </div>
+                                <div class="input-group m-b">
+                                  <span class="input-group-addon btn-info"><i class="icon-linkedin"></i></span>
+                                  <input type="text" class="form-control" placeholder="Linkedin Profile Link">
+                                </div>                     
+                                <button type="submit" class="btn btn-sm btn-default">Save Settings</button>
+                              </form>
+                            </div>
+                          </section>
                         </div>
-                                                                                
-                        <div class="form-group">
-                                <input type="text" class="form-control" placeholder="State">
+                      </div>
+
+                      <br>
+                      <div class="tab-content">
+                        <section class="tab-pane active" id="basic">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <section class="panel">
+                                <header class="panel-heading font-bold">Profile Information</header>
+                                <div class="panel-body">
+                                  <form role="form">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="First Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Last Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                     <input type="text" class="form-control" placeholder="City">
+                                   </div>
+
+                                   <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="State">
+                                  </div>
+
+                                  <button type="submit" class="btn btn-sm btn-default">Save Profile Information</button>
+                                </form>
+                              </div>
+                            </section>
+                          </div>
                         </div>
-                             
-                    <button type="submit" class="btn btn-sm btn-default">Save Profile Information</button>
-                  </form>
-                </div>
+                        <br>
+
+                        <div class="tab-content">
+                          <section class="tab-pane active" id="basic">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <section class="panel">
+                                  <header class="panel-heading font-bold">Profile Image</header>
+                                  <div class="panel-body">
+                                    <form role="form">
+                                      <div class="form-group">
+                                        <label>Upload Profile Picture</label>
+                                        <input type="file" class="form-control" placeholder="Enter email">
+                                      </div>           
+                                      <button type="submit" class="btn btn-sm btn-default">Save Profile Image</button>
+                                    </form>
+                                  </div>
+                                </section>
+                              </div>
+                            </div>
+
+                            <div class="text-center wrapper">
+                              1) Social Inputs
+                              2) Change Password
+                              3) Upload profile picture
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </section>
+                  </aside>
+
+                </section>
               </section>
-            </div>
-          </div>
-          <br>
-          
-             <div class="tab-content">
-        <section class="tab-pane active" id="basic">
-          <div class="row">
-            <div class="col-sm-12">
-              <section class="panel">
-                <header class="panel-heading font-bold">Profile Image</header>
-                <div class="panel-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <label>Upload Profile Picture</label>
-                      <input type="file" class="form-control" placeholder="Enter email">
-                    </div>           
-                    <button type="submit" class="btn btn-sm btn-default">Save Profile Image</button>
-                  </form>
-                </div>
-              </section>
-            </div>
-          </div>
-                  <div class="text-center wrapper">
-                    1) Social Inputs
-                    2) Change Password
-                    3) Upload profile picture
-                  </div>
-                </div>
-              </div>
             </section>
+            <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
           </section>
-        </aside>
-        
-      </section>
-    </section>
-  </section>
-  <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
-</section>
-{% endblock %}
+
+          {% endblock %}

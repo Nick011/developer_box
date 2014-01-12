@@ -153,6 +153,7 @@
           </button>
           <br><br>
 
+          {% with profile=item.user.profile %}
           <h5 class="font-semibold">About Developer</h5>
           <div class="line line-dashed"></div>
           <div class="m-b-lg">
@@ -160,41 +161,16 @@
               <img src="{% static 'images/nick.jpg' %}" class="img-circle">
             </span>
             <p class="clear text-sm">
-              <a href="profile.php" class="text-info">@{{ item.user }}</a> : {{ item.user.profile.bio }}
+              <a href="{% url 'profile-detail' item.user %}" class="text-info">@{{ item.user }}</a> : {{ profile.bio }}
             </p>
           </div>
 
           <div class="line line-dashed"></div>
 
           <div class="m-t-sm m-b-lg">
-            {% with profile=item.user.profile %}
-            {% if profile.website %}
-            <a href="{{ profile.website }}" title="Website" class="btn btn-rounded btn-warning btn-icon">
-              <i class="icon-rss"></i>
-            </a>
-            {% endif %}
-            {% if profile.twitter %}
-            <a href="{{ profile.twitter }}" title="Twitter" class="btn btn-rounded btn-twitter btn-icon">
-              <i class="icon-twitter"></i>
-            </a>
-            {% endif %}
-            {% if profile.facebook %}
-            <a href="{{ profile.facebook }}" title="Facebook" class="btn btn-rounded btn-facebook btn-icon">
-              <i class="icon-facebook"></i>
-            </a>
-            {% endif %}
-            {% if profile.google %}
-            <a href="{{ profile.google }}" title="Google+" class="btn btn-rounded btn-gplus btn-icon">
-              <i class="icon-google-plus"></i>
-            </a>
-            {% endif %}
-            {% if profile.linkedin %}
-            <a href="{{ profile.linkedin }}" title="LinkedIn" class="btn btn-rounded btn-info btn-icon">
-              <i class="icon-linkedin"></i>
-            </a>
-            {% endif %}
-            {% endwith %}
+            {% include "includes/social_icons.html" profile=profile %}
           </div>
+          {% endwith %}
 
           <h5 class="font-semibold">Similar Results (TODO)</h5>
           <div class="line line-dashed"></div>

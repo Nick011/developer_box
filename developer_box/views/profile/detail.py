@@ -8,9 +8,10 @@ class ProfileDetailView(DetailView):
 	model = Profile
 
 	def get_object(self):
-		return get_object_or_404(Profile.objects.select_related(), user__username=self.kwargs['slug'])
+		return get_object_or_404(Profile.objects.select_related(), user__username=self.kwargs['username'])
 
 	def get_context_data(self, **kwargs):
-		context = super(DashboardView, self).get_context_data(**kwargs)
-		context['items'] = Item.objects.filter(user=user)
+		context = super(ProfileDetailView, self).get_context_data(**kwargs)
+		context['user_items'] = Item.objects.filter(user=self.request.user)
+		context['recently_created'] = Item.objects.order_by('created_at')[:20]
 		return context
