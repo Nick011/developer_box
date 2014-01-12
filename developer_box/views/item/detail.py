@@ -8,6 +8,8 @@ class ItemDetailView(DetailView):
 	model = Item
 	queryset = Item.objects.select_related()
 
-	#def get_queryset(self):
-		#return get_object_or_404(self.model.objects, pk=self.kwargs['id'])
+	def get_context_data(self, **kwargs):
+		context = super(ItemDetailView, self).get_context_data(**kwargs)
+		context['similar_results'] = Item.objects.order_by('created_at')[:5]
+		return context
 

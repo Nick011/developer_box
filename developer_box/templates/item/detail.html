@@ -167,41 +167,40 @@
           <div class="line line-dashed"></div>
 
           <div class="m-t-sm m-b-lg">
-            <a href="{{ item.user.profile.website }}" title="Website" class="btn btn-rounded btn-warning btn-icon">
+            {% with profile=item.user.profile %}
+            {% if profile.website %}
+            <a href="{{ profile.website }}" title="Website" class="btn btn-rounded btn-warning btn-icon">
               <i class="icon-rss"></i>
             </a>
-            <a href="{{ item.user.profile.twitter }}" title="Twitter" class="btn btn-rounded btn-twitter btn-icon">
+            {% endif %}
+            {% if profile.twitter %}
+            <a href="{{ profile.twitter }}" title="Twitter" class="btn btn-rounded btn-twitter btn-icon">
               <i class="icon-twitter"></i>
             </a>
-            <a href="{{ item.user.profile.facebook }}" title="Facebook" class="btn btn-rounded btn-facebook btn-icon">
+            {% endif %}
+            {% if profile.facebook %}
+            <a href="{{ profile.facebook }}" title="Facebook" class="btn btn-rounded btn-facebook btn-icon">
               <i class="icon-facebook"></i>
             </a>
-            <a href="{{ item.user.profile.google }}" title="Google+" class="btn btn-rounded btn-gplus btn-icon">
+            {% endif %}
+            {% if profile.google %}
+            <a href="{{ profile.google }}" title="Google+" class="btn btn-rounded btn-gplus btn-icon">
               <i class="icon-google-plus"></i>
             </a>
-            <a href="{{ item.user.profile.linkedin }}" title="LinkedIn" class="btn btn-rounded btn-info btn-icon">
+            {% endif %}
+            {% if profile.linkedin %}
+            <a href="{{ profile.linkedin }}" title="LinkedIn" class="btn btn-rounded btn-info btn-icon">
               <i class="icon-linkedin"></i>
             </a>
+            {% endif %}
+            {% endwith %}
           </div>
 
           <h5 class="font-semibold">Similar Results (TODO)</h5>
           <div class="line line-dashed"></div>
 
           <ul class="list-unstyled m-b-lg">
-            <li>
-              <p>JQuery Data Distance : description of this similar one</p>
-              <small class="block text-muted"><i class="icon-time"></i>2 minuts ago</small>
-              <div class="line"></div>
-            </li>
-            <li>
-              <p>Javascript Distance Data : nunc condimentum ipsum dolor sit amet, consectetur</p>
-              <small class="block text-muted"><i class="icon-time"></i>1 hour ago</small>
-              <div class="line"></div>
-            </li>
-            <li>
-              <p>JQuery Fixed Distance Fix : nunc condimentum ipsum dolor sit amet, consectetur</p>
-              <small class="block text-muted"><i class="icon-time"></i>3 Days ago</small>
-            </li>
+            {% include "item/_item.html" with items=similar_results %}
           </ul>
 
         </article>
