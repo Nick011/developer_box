@@ -9,7 +9,7 @@ from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 
 class Item(models.Model):
-	user = models.ForeignKey(User, null=True)
+	user = models.ForeignKey(User, blank=True, null=True)
 	tag = models.ManyToManyField(Tag)
 	bucket = models.ManyToManyField(Bucket)
 	title = models.CharField(max_length=75, blank=False, null=False)
@@ -24,7 +24,7 @@ class Item(models.Model):
 		app_label = "developer_box"
 
 	def get_url(self):
-		return reverse('item-detail', kwargs={'id': self.id, 'slug': self.slug})
+		return reverse('item-detail', kwargs={'pk': self.id, 'slug': self.slug})
 
 	def highlight_script(self):
 		lexer = guess_lexer(self.script, stripall=True)
