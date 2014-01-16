@@ -8,7 +8,8 @@ class ProfileDetailView(DetailView):
 	model = Profile
 
 	def get_object(self):
-		return get_object_or_404(Profile.objects.select_related(), user__username=self.kwargs['username'])
+		username = self.kwargs['username'] or self.request.user.username
+		return get_object_or_404(Profile.objects.select_related(), user__username=username)
 
 	def get_context_data(self, **kwargs):
 		user = self.request.user

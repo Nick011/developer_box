@@ -1,10 +1,126 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1>List of Items</h1>
-<ul>
-{% for item in item_list %}
-	<li><a href="{% url 'item-detail' item.id item.slug %}">{{ item.title }}</li>
-{% endfor %}
-</ul>
+<section id="content">
+	<section class="vbox">
+		<header class="header b-b bg-white">
+			<div class="input-group input-s pull-right m-t-sm">
+				<span class="input-group-addon input-sm"><i class="icon-search"></i></span>
+				<input type="text" class="form-control input-sm" id="search-note" placeholder="search">
+			</div>
+			<div class="btn-group pull-left">
+				<a href="dashboard.php" type="button" class="btn btn-sm btn-white"><i class="icon-chevron-left"></i> Back</a>
+				</div>
+		</header>
+
+		<section class="scrollable wrapper">          
+			<div class="row">
+				<div class="col-sm-9">
+					<div class="blog-post">
+						<div class="post-item">
+
+
+							<div class="caption wrapper-lg">
+								<h2 class="post-title">Search</h2>
+								<form action="" method="get" name="search_items" id="search_items">
+									<input style="width:100%;margin-bottom:20px;" placeholder="Search..." type="text" class="form-control" name="q" id="q">
+								</form>
+
+								<section class="panel portlet-item">
+
+									<section class="panel-body">
+										{% for item in item_list %}
+										<article class="media">
+											<div class="pull-left">
+												<span class="icon-stack icon-2x">
+													<i class="icon-circle text-info icon-stack-base"></i>
+													<i class="icon-bold icon-light"></i>
+												</span>
+											</div>
+											
+											<div class="media-body">                        
+												<a href="{% url 'item-detail' item.id item.slug %}" class="h4">{{ item.title }}</a>
+												<small class="block m-t-xs">{{ item.description }}</small>
+												<em class="text-xs">Posted on <span class="text-danger">{{ item.created_at|date:'M d, Y' }}</span></em>
+												<em class="text-xs">Author : <span class="text-success"> <a href="{% url 'profile-detail' item.user" class="text-info">@{{ item.user }}</a></span></em>
+
+											</div>
+										</article>
+
+										<div class="line pull-in"></div>
+										{% endfor %}
+
+									</section>
+								</section>
+
+								<footer class="panel-footer">
+									<div class="row">
+										<div class="col-sm-4 hidden-xs">
+
+										</div>
+										<div class="col-sm-4 text-center">
+											{% if is_paginated %}
+											<small class="text-muted inline m-t-sm m-b-sm">showing {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} pages</small>
+											{% endif %}
+										</div>
+										<div class="col-sm-4 text-right text-center-xs">      
+											{% if is_paginated %}          
+											<ul class="pagination pagination-sm m-t-none m-b-none">
+												{% if page_obj.has_previous %}
+												<li><a href="?page={{ page_obj.previous_page_number }}"><i class="icon-chevron-left"></i></a></li>
+												{% endif %}
+
+												{% for page_number in page_obj.page_range %}
+													{% if page_obj.number == page_number %}
+														<li class="highlight"><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+													{% else %}
+														<li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+													{% endif %}
+												{% endfor %}
+												
+												{% if page_obj.has_next %}
+												<li><a href="?page={{ page_obj.next_page_number"><i class="icon-chevron-right"></i></a></li>
+												{% endif %}
+											</ul>
+											{% endif %}
+										</div>
+									</div>
+								</footer>
+
+
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+
+
+					<h5 class="font-semibold">Categories</h5>
+
+					<div class="row">            
+						<div class="col-sm-12">
+							<div class="list-group bg-white">
+								{% for tag in tag_list %}
+								<a href="#" class="list-group-item">
+									<i class="icon-chevron-right"></i>
+									<span class="badge">{{ tag.item__count }}</span>
+									{{ tag.name }}
+								</a>
+								{% endfor %}
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</section>
+<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+</section>
+<!-- /.vbox -->
+</section>
 {% endblock %}
