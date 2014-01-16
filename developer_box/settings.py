@@ -110,6 +110,14 @@ STATICFILES_FINDERS = (
 )
 
 if not DEBUG:
+  DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': '',
+    'PASSWORD': ''
+    }
+  }
+
   EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = 'sendgrid_username'
   EMAIL_HOST_PASSWORD = 'sendgrid_password'

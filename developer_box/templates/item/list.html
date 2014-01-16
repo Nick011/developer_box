@@ -47,7 +47,9 @@
 											</div>
 										</article>
 
-										<div class="line pull-in"></div>
+											{% if not forloop.last %}
+											<div class="line pull-in"></div>
+											{% endif %}
 										{% endfor %}
 
 									</section>
