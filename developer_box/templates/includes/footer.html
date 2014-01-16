@@ -37,16 +37,17 @@
         <div class="col-sm-12 b-r">
           <h3 class="m-t-none m-b">Add To Toolbox</h3>
           <p>Add to a specific toolbox</p>
-          <form role="form">
+          <form role="form" action="{% url 'item-add' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="item_id" id="item_id" value="{{ item.id }}">
             <div class="form-group">
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Select</label>
                   <div class="col-sm-10">
-                    <select name="account" class="form-control m-b">
-                      <option>All</option>
-                      <option>Python</option>
-                      <option>Ruby on Rails</option>
-                      <option>Javascript</option>
+                    <select name="bucket_id" id="bucket_id" class="form-control m-b">
+                      {% for bucket in user.bucket_set.all %}
+                      <option value="{{ bucket.id }}">{{ bucket.title }}</option>
+                      {% endfor %}
                     </select>
                   </div>
                 </div>

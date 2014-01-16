@@ -41,6 +41,7 @@
                       <label class="col-sm-2 control-label">Select</label>
                       <div class="col-sm-10">
                         <select name="account" class="form-control m-b">
+                          {% for bucket in user.bucket %}
                           <option>All</option>
                           <option>Python</option>
                           <option>Ruby on Rails</option>

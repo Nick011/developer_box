@@ -139,9 +139,15 @@
         </div>
 
         <div class="col-sm-3">
+          {% if item.in_box %}
+          <a data-toggle="modal" class="btn btn-error btn-lg">
+            In Toolbox (yip yip)<i class="icon-plus"></i>
+          </a>
+          {% else %}
           <a href="#add-toolbox" data-toggle="modal" class="btn btn-success btn-lg">
             Add To Toolbox<i class="icon-plus"></i>
           </a>
+          {% endif %}
           <br><br>
 
           <h5 class="font-semibold">Stats</h5>

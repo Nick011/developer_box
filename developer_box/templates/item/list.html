@@ -42,7 +42,7 @@
 												<a href="{% url 'item-detail' item.id item.slug %}" class="h4">{{ item.title }}</a>
 												<small class="block m-t-xs">{{ item.description }}</small>
 												<em class="text-xs">Posted on <span class="text-danger">{{ item.created_at|date:'M d, Y' }}</span></em>
-												<em class="text-xs">Author : <span class="text-success"> <a href="{% url 'profile-detail' item.user" class="text-info">@{{ item.user }}</a></span></em>
+												<em class="text-xs">Author : <span class="text-success"> <a href="{% url 'profile-detail' item.user %}" class="text-info">@{{ item.user }}</a></span></em>
 
 											</div>
 										</article>

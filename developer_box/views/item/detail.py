@@ -10,6 +10,7 @@ class ItemDetailView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ItemDetailView, self).get_context_data(**kwargs)
+		context['item'].in_box = context['item'].in_box(self.request.user)
 		context['similar_results'] = Item.objects.order_by('created_at')[:5]
 		context['profile'] = context['item'].user.profile
 		return context

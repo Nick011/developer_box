@@ -26,6 +26,9 @@ class Item(models.Model):
 	def get_url(self):
 		return reverse('item-detail', kwargs={'pk': self.id, 'slug': self.slug})
 
+	def in_box(self, user):
+		return self.bucket.filter(user=user).exists()
+
 	def highlight_script(self):
 		lexer = guess_lexer(self.script, stripall=True)
 		formatter = HtmlFormatter(linenos=True, cssclass="source")
