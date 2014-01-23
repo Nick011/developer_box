@@ -27,7 +27,7 @@ class Item(models.Model):
 		return reverse('item-detail', kwargs={'pk': self.id, 'slug': self.slug})
 
 	def in_box(self, user):
-		return self.bucket.filter(user=user).exists()
+		return self.bucket.filter(user=user).exists() if user.is_authenticated() else False
 
 	def highlight_script(self):
 		lexer = guess_lexer(self.script, stripall=True)
