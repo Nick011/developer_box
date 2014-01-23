@@ -2,6 +2,124 @@
 {% load staticfiles %}
 
 {% block main %}
+{% include "includes/sidebar.html" with buckets=buckets %}
+
+<!-- .aside -->
+<aside class="bg-light lter">
+	<section class="vbox">
+		<header class="bg-light dker header clearfix">
+			<div class="btn-group pull-right">
+				<button class="btn btn-success btn-sm pull-right">Add New To Toolbox<i class="icon-plus"></i></button>
+			</div>
+			<div class="btn-toolbar">
+				<h4>All Results</h4>    
+			</div>
+		</header>            
+		<section class="scrollable hover">
+			<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-alt list-group-lg">
+				{% for item in recently_created %}
+          <li class="list-group-item">
+            <a href="{% url 'profile-detail' item.user %} " class="thumb-xs pull-left m-r-sm">
+	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
+	            <!--
+							<img src="{{ user.profile.image.url }}" class="img-circle">
+	            -->
+	          </a>
+            <a href="{% url 'item-detail' item.id item.slug %}" class="clear">
+              <small class="pull-right">
+              	{# need different classes for dif color dots #}
+                {% for tag in item.tag.all %}
+                <span class="label label-sm bg-danger text-uc">{{ tag.name }}</span>
+                {% endfor %}
+              </small>
+              <strong class="block">{{ item.title }}</strong>
+              <small>{{ item.description }}</small>
+            </a>
+          </li>
+        {% endfor %}
+			</ul>
+		</section>
+
+		<footer class="footer b-t bg-white-only">
+			<form class="m-t-sm">
+				<div class="input-group">
+					<input type="text" class="input-sm form-control input-s-sm" placeholder="Search Your Toolbox...">
+					<div class="input-group-btn">
+						<button class="btn btn-sm btn-white"><i class="icon-search"></i></button>
+					</div>
+				</div>
+			</form>
+		</footer>
+	</section>
+</aside>
+<!-- /.aside -->
+
+
+<!-- WTF is this shit? -->
+<!-- .aside -->
+<aside class="bg-white hide col-lg-6 b-l" id="email-content">
+	<section class="vbox">
+		<section class="scrollable hover">
+			<div class="wrapper b-b">
+				<a href="#" data-toggle="class" class="pull-left"><i class="icon-star-empty icon-xlarge text"></i><i class="icon-star text-warning icon-xlarge text-active"></i></a>
+				<a href="#email-content" data-toggle="class:show" class="pull-right text">
+					<i class="icon-trash"></i>
+				</a>
+				<h4 class="m-n">Kickoff meeting</h4>
+			</div>
+			<div class="text-sm padder m-t">
+				<div class="block clearfix m-b">
+					<a href="#" class="thumb-xs inline"><img src="images/avatar.jpg" class="img-circle"></a> 
+					<span class="inline m-t-xs">Mika Sokeil
+						&lt;mica_sokeil@gmail.com&gt; to me</span>
+						<div class="pull-right inline">May 12 (<em>4 days ago</em>)                         
+							<div class="btn-group">
+								<button class="btn btn-white btn-xs" data-toggle="tooltip" data-title="Reply"><i class="icon-reply"></i></button>
+								<button class="btn btn-white btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu pull-right">
+									<li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+									<li><a href="#"><i class="icon-signout"></i> Forward</a></li>
+									<li><a href="#">Add Mika Sokeil to contact list</a></li>
+									<li><a href="#">Mark as unread</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Delete this message</a></li>
+									<li><a href="#">Report spam</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="line pull-in"></div>
+					<p>Mr. Soe</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
+					<blockquote>
+						<em>Morbi nec nunc condimentum, egestas dui nec, fermentum diam. Vivamus vel tincidunt libero, vitae elementum ligula. Nunc placerat purus quam, ac adipiscing arcu rutrum eu. Vestibulum adipiscing ut augue ut auctor. Vestibulum nec lorem imperdiet nibh mollis gravida ut a justo.<br><br>Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis</em>
+					</blockquote>
+					<div class="show">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
+						<p>Duis non malesuada est, quis congue nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
+						<p>Duis non malesuada est, quis congue nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend</p>
+					</div>
+					<p>Best Regards<br>Mical</p>
+				</div>
+				<div class="padder">
+					<div class="panel text-sm bg-light">
+						<div class="panel-body">
+							Click here to <a href="#">Reply</a> or <a href="#">Forward</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+	</aside>
+	<!-- /.aside -->   
+</section>
+</section>
+<!-- /.vbox -->
+</section>
+
+<!--
 <section id="content">
   <section class="vbox">
     <header class="header bg-white b-b">
@@ -287,5 +405,5 @@
             </section>
             <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
           </section>
-
-          {% endblock %}
+-->
+{% endblock %}

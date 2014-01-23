@@ -58,7 +58,7 @@
                 <div class="line line-lg"></div>
 
                 <div class="text-muted">
-                  <i class="icon-user icon-muted"></i> by <a href="{% url 'profile-detail' item.user " class="m-r-sm">{{ item.user }}</a>
+                  <i class="icon-user icon-muted"></i> by <a href="{% url 'profile-detail' item.user %}" class="m-r-sm">{{ item.user }}</a>
                   <i class="icon-time icon-muted"></i> {{ item.created_at|date:'M d, Y' }}
                   <a href="#" class="m-l-sm"><i class="icon-comment-alt icon-muted"></i> {{ item.comments.all|length }} comments</a>
                 </div>

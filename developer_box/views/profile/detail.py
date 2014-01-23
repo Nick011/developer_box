@@ -15,6 +15,7 @@ class ProfileDetailView(DetailView):
 		user = self.request.user
 		context = super(ProfileDetailView, self).get_context_data(**kwargs)
 		context['user_items'] = Item.objects.filter(user=user)
+		context['buckets'] = user.bucket_set.all()
 		context['recently_created'] = Item.objects.order_by('created_at').select_related('tag')[:20]
 		context['follower_count'] = Follower.objects.filter(user=user).count()
 		context['following_count'] = Follower.objects.filter(following=user).count()
