@@ -126,23 +126,21 @@ if not DEBUG:
   EMAIL_PORT = 587
   EMAIL_USE_TLS = True
 
-
   # Parse database configuration from $DATABASE_URL
-	import dj_database_url
-	DATABASES['default'] =  dj_database_url.config()
-
+  import dj_database_url
+  DATABASES['default'] =  dj_database_url.config()
 	# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+  SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 	# Allow all host headers
-	ALLOWED_HOSTS = ['*']
+  ALLOWED_HOSTS = ['*']
 
 	# Static asset configuration
-	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-	STATIC_ROOT = 'staticfiles'
-	STATIC_URL = '/static/'
+  BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+  STATIC_ROOT = 'staticfiles'
+  STATIC_URL = '/static/'
 
-	STATICFILES_DIRS = (
+  STATICFILES_DIRS = (
 		os.path.join(BASE_DIR, 'static'),
 	)
 
