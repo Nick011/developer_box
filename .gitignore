@@ -6,5 +6,6 @@
 *.pyc
 *.DS_Store
 
+developer_box/local_settings.py
 ENV/
 env/
