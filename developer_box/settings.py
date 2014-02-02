@@ -44,10 +44,10 @@ INSTALLED_APPS = (
   'django.contrib.comments',
   'south',
   'registration',
-  'developer_box',
   'django.contrib.admin',
   'compressor',
   'debug_toolbar',
+  'developer_box'
 )
 
 SITE_ID = 1
@@ -112,13 +112,6 @@ STATICFILES_FINDERS = (
 LOGIN_REDIRECT_URL = '/accounts/profile'
 
 if not DEBUG:
-  # Parse database configuration from $DATABASE_URL
-  import dj_database_url
-
-  DATABASES =  {
-      'default': dj_database_url.config()
-  }
-
   EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
   EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
