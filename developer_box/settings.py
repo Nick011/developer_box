@@ -69,9 +69,9 @@ MIDDLEWARE_CLASSES = (
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'developer_box.urls'
 
-#WSGI_APPLICATION = 'wsgi'
+WSGI_APPLICATION = 'developer_box.wsgi.application'
 
 
 # Database
