@@ -113,13 +113,10 @@ STATICFILES_FINDERS = (
 LOGIN_REDIRECT_URL = '/accounts/profile'
 
 if not DEBUG:
-  STATIC_URL = "https://s3.amazonaws.com/codbeaker/"
-  STATIC_ROOT = STATIC_URL
-  MEDIA_URL = STATIC_URL + "media/"
-  # Django Storages/S3 Settings
-  DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+  AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
   STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-  EMAIL_HOST = 'smtp.sendgrid.net'
+  S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+  STATIC_URL = S3_URL  EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
   EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
   EMAIL_PORT = 587
