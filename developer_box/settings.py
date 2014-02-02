@@ -28,6 +28,11 @@ TEMPLATE_DIRS = (
   os.path.join(BASE_DIR, 'templates'),
 )
 
+ADMINS = (
+    ('Nick Hagianis', 'nhagianis@gmail.com'),
+)
+MANAGERS = ADMINS
+
 ALLOWED_HOSTS = []
 
 
