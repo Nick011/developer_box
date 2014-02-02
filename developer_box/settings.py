@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '^()s1btwg8h81#x#avl$w@4$yg6l$k35u_8-@usuvbo)e8fi))'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -69,9 +69,9 @@ MIDDLEWARE_CLASSES = (
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-ROOT_URLCONF = 'developer_box.urls'
+ROOT_URLCONF = 'urls'
 
-WSGI_APPLICATION = 'developer_box.wsgi.application'
+#WSGI_APPLICATION = 'wsgi'
 
 
 # Database
