@@ -112,12 +112,11 @@ STATICFILES_FINDERS = (
 LOGIN_REDIRECT_URL = '/accounts/profile'
 
 if not DEBUG:
-  DATABASES = {
-    'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': '',
-    'PASSWORD': ''
-    }
+  # Parse database configuration from $DATABASE_URL
+  import dj_database_url
+
+  DATABASES =  {
+      'default': dj_database_url.config()
   }
 
   EMAIL_HOST = 'smtp.sendgrid.net'
