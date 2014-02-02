@@ -42,6 +42,7 @@ INSTALLED_APPS = (
   'django.contrib.sites',
   'threadedcomments',
   'django.contrib.comments',
+  'storages',
   'south',
   'registration',
   'django.contrib.admin',
@@ -112,6 +113,12 @@ STATICFILES_FINDERS = (
 LOGIN_REDIRECT_URL = '/accounts/profile'
 
 if not DEBUG:
+  STATIC_URL = "https://s3.amazonaws.com/codbeaker/"
+  STATIC_ROOT = STATIC_URL
+  MEDIA_URL = STATIC_URL + "media/"
+  # Django Storages/S3 Settings
+  DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+  STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
   EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
   EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
