@@ -112,6 +112,18 @@ STATICFILES_FINDERS = (
 
 LOGIN_REDIRECT_URL = '/accounts/profile'
 
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+  os.path.join(BASE_DIR, 'static'),
+)
+
 if not DEBUG:
   AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
   AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -133,15 +145,5 @@ if not DEBUG:
 	# Honor the 'X-Forwarded-Proto' header for request.is_secure()
   SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-	# Allow all host headers
-  ALLOWED_HOSTS = ['*']
 
-	# Static asset configuration
-  BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-  STATIC_ROOT = 'staticfiles'
-  STATIC_URL = '/static/'
-
-  STATICFILES_DIRS = (
-		os.path.join(BASE_DIR, 'static'),
-	)
 
