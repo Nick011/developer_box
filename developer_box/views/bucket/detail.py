@@ -1,6 +1,5 @@
 from django.views.generic import DetailView
 from developer_box.models import Bucket, Item
-from developer_box.mixins import LoginRequired
 
 class BucketDetailView(DetailView):
 	template_name = 'bucket/detail.html'

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block main %}
-{% include "includes/sidebar.html" with buckets=buckets %}
+{% include "includes/sidebar.html" with buckets=buckets user=profile.user %}
 
 <!-- .aside -->
 <aside class="bg-light lter">
