@@ -13,9 +13,11 @@ urlpatterns = patterns('',
   url(r'^admin/', include(admin.site.urls)),
   url(r'^accounts/', include('registration.backends.default.urls')),
   
-  url(r'^$', IndexView.as_view(), name='home'),
+  #url(r'^$', IndexView.as_view(), name='home'),
+  url(r'^$', ItemListView.as_view(), name='home'),
   
   #item actions
+  url(r'^search/$', ItemListView.as_view(), name='item-list'),
   url(r'^items/$', ItemListView.as_view(), name='item-list'),
   url(r'^item/create/$', ItemCreateView.as_view(), name='item-create'),
   url(r'^item/(?P<pk>\d+)/(?P<slug>[\w-]+)/$', ItemDetailView.as_view(), name='item-detail'),
