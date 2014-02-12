@@ -21,8 +21,9 @@ urlpatterns = patterns('',
   url(r'^item/(?P<pk>\d+)/(?P<slug>[\w-]+)/$', ItemDetailView.as_view(), name='item-detail'),
   url(r'^item/add/$', ItemAddView.as_view(), name='item-add'),
 
-  #toolbox actions **Ask Chris about bucket name vs toobox vs ??
-  url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
+  #toolbox actions **Ask Chris about bucket name vs toolbox vs ??
+  #woah cray
+  url(r'^(?P<username>[\w-]+)/(?P<pk>\d+)/(?P<slug>[\w-]+)/$', BucketDetailView.as_view(), name='bucket-detail'),
   #url(r'^toolbox/create/$', ToolboxCreateView.as_view(), name='toolbox-create'),
   
   #user actions

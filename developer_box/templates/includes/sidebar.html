@@ -54,7 +54,7 @@
 
 										{% for bucket in buckets %}
 										<li>
-											<a href="#">
+											<a href="{% url 'bucket-detail' bucket.user.username bucket.id bucket.slug %}">
 												{# TODO: needs {{ bucket.color }} in the icon class #}
 												<i class="icon-circle text-success pull-right m-t-xs"></i>
 												{{ bucket.title }}

@@ -21,7 +21,7 @@ class Item(models.Model):
 	last_viewed_at = models.DateTimeField(auto_now=True, auto_now_add=True)
 
 	class Meta:
-		app_label = "developer_box"
+		app_label = 'developer_box'
 
 	def get_url(self):
 		return reverse('item-detail', kwargs={'pk': self.id, 'slug': self.slug})
@@ -31,7 +31,7 @@ class Item(models.Model):
 
 	def highlight_script(self):
 		lexer = guess_lexer(self.script, stripall=True)
-		formatter = HtmlFormatter(linenos=True, cssclass="source")
+		formatter = HtmlFormatter(linenos=True, cssclass='source')
 		return highlight(self.script, lexer, formatter)
 
 	def __unicode__(self):
