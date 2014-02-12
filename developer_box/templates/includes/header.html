@@ -30,13 +30,13 @@
             </li>
             {% if user.id %}
             <li>
-              <a href="{% url 'profile-edit' user.id %}">
+              <a href="{% url 'profile-edit' %}">
                 <i class="icon-gear"></i>
                 <span>Settings</span>
               </a>
             </li>
             <li>
-              <a href="{% url 'profile-detail' %}">
+              <a href="{% url 'profile-detail' user %}">
                 <i class="icon-user"></i>
                 <span>Profile</span>
               </a>
