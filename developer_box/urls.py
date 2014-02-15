@@ -26,7 +26,7 @@ urlpatterns = patterns('',
   #url(r'^toolbox/create/$', ToolboxCreateView.as_view(), name='toolbox-create'),
   
   #user actions
-  url(r'^accounts/profile/$', ProfileDetailView.as_view(), name='profile-edit'),
+  url(r'^accounts/profile/$', ProfileEditView.as_view(), name='profile-edit'),
   url(r'^follow/$', FollowView.as_view(), name='follow'),
 
   url(r'^(?P<username>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail')

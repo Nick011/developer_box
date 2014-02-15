@@ -5,6 +5,9 @@
 	<section class="vbox">
 		<header class="header b-b bg-white">
 			<div class="input-group input-s pull-right m-t-sm">
+				{% if not user.username %}
+				<a href="{% url 'auth_login' %}">Login</a>
+				{% endif %}
 				<span class="input-group-addon input-sm"><i class="icon-search"></i></span>
 				<form action="{% url 'item-list' %}" method="get" name="search_items" id="search_items">
 					<input type="text" class="form-control input-sm" name="q" id="search-note" placeholder="search">
@@ -12,7 +15,7 @@
 			</div>
 			<div class="btn-group pull-left">
 				<a href="#" type="button" class="btn btn-sm btn-white"><i class="icon-chevron-left"></i> Back</a>
-				</div>
+			</div>
 		</header>
 
 		<section class="scrollable wrapper">          
@@ -20,7 +23,6 @@
 				<div class="col-sm-9">
 					<div class="blog-post">
 						<div class="post-item">
-
 
 							<div class="caption wrapper-lg">
 								<h2 class="post-title">Search</h2>

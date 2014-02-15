@@ -72,9 +72,7 @@
 
   <script>
     $(function(){
-      alert('before');
       PR.prettyPrint();
-      alert('after');
       $('a#copy-script').zclip({
         path:'js/clipboard/ZeroClipboard.swf',
         copy:$('pre#script').text()
