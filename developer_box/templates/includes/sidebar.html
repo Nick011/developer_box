@@ -10,6 +10,9 @@
 					<div class="clear">
 						<div class="h3 m-t-xs m-b-xs text-info">@{{ profile.user }}</div>
 						<small class="text-muted"><i class="icon-map-marker"></i> Tampa, FL</small>
+						{% if user == profile.user %}
+						<div><small class="text-muted"><a href="{% url 'profile-edit' %}">Edit Profile</a></small></div>
+						{% endif %}
 					</div>
 				</div>
 				<div class="panel wrapper">
