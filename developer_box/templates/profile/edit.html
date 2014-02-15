@@ -16,6 +16,7 @@
 		</header>            
 		<section class="scrollable hover">
 			<form action="" method="post" class="panel-body">
+				{% csrf_token %}
 				{{ form|as_template }}
 				<button type="submit" class="btn btn-info">Save</button>
 			</form>

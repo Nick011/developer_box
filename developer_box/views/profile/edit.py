@@ -1,11 +1,13 @@
 from django.views.generic import UpdateView
 from developer_box.models import Profile, Item, Follower
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 
 class ProfileEditView(UpdateView):
 	template_name = "profile/edit.html"
 	context_object_name = "profile"
 	model = Profile
+	success_url = '/accounts/profile'
 
 	def get_object(self):
 		username = self.request.user.username
