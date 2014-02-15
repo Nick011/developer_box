@@ -11,7 +11,7 @@ class ProfileEditView(LoginRequired, UpdateView):
 	success_url = '/accounts/profile'
 
 	def get_object(self):
-		return Profile.objects.get_or_create(user=self.request.user)
+		return Profile.objects.get_or_create(user=self.request.user)[0]
 
 	def get_context_data(self, **kwargs):
 		user = self.request.user
