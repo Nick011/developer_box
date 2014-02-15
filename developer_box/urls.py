@@ -23,6 +23,9 @@ urlpatterns = patterns('',
   url(r'^item/(?P<pk>\d+)/(?P<slug>[\w-]+)/$', ItemDetailView.as_view(), name='item-detail'),
   url(r'^item/add/$', ItemAddView.as_view(), name='item-add'),
 
+  #bucket actions
+  url(r'^bucket/create/$', BucketCreateView.as_view(), name='bucket-create'),
+
   #url(r'^toolbox/create/$', ToolboxCreateView.as_view(), name='toolbox-create'),
   
   #user actions

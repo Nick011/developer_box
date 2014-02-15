@@ -13,3 +13,7 @@ class Bucket(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.title)
+		super(Bucket, self).save(*args, **kwargs)
