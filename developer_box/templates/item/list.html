@@ -6,7 +6,9 @@
 		<header class="header b-b bg-white">
 			<div class="input-group input-s pull-right m-t-sm">
 				<span class="input-group-addon input-sm"><i class="icon-search"></i></span>
-				<input type="text" class="form-control input-sm" id="search-note" placeholder="search">
+				<form action="{% url 'item-list' %}" method="get" name="search_items" id="search_items">
+					<input type="text" class="form-control input-sm" name="q" id="search-note" placeholder="search">
+				</form>
 			</div>
 			<div class="btn-group pull-left">
 				<a href="#" type="button" class="btn btn-sm btn-white"><i class="icon-chevron-left"></i> Back</a>
@@ -22,7 +24,7 @@
 
 							<div class="caption wrapper-lg">
 								<h2 class="post-title">Search</h2>
-								<form action="" method="get" name="search_items" id="search_items">
+								<form action="{% url 'item-list' %}" method="get" name="search_items" id="search_items">
 									<input style="width:100%;margin-bottom:20px;" placeholder="Search..." type="text" class="form-control" name="q" id="q" value="{{ query }}">
 									{% if tag_selected %}
 									<input type="hidden" name="tag" value="{{ tag_selected }}">

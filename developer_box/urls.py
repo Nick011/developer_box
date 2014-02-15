@@ -17,15 +17,12 @@ urlpatterns = patterns('',
   url(r'^$', ItemListView.as_view(), name='home'),
   
   #item actions
-  url(r'^search/$', ItemListView.as_view(), name='item-list'),
+  #url(r'^search/$', ItemListView.as_view(), name='item-list'),
   url(r'^items/$', ItemListView.as_view(), name='item-list'),
   url(r'^item/create/$', ItemCreateView.as_view(), name='item-create'),
   url(r'^item/(?P<pk>\d+)/(?P<slug>[\w-]+)/$', ItemDetailView.as_view(), name='item-detail'),
   url(r'^item/add/$', ItemAddView.as_view(), name='item-add'),
 
-  #toolbox actions **Ask Chris about bucket name vs toolbox vs ??
-  #woah cray
-  url(r'^(?P<username>[\w-]+)/(?P<pk>\d+)/(?P<slug>[\w-]+)/$', BucketDetailView.as_view(), name='bucket-detail'),
   #url(r'^toolbox/create/$', ToolboxCreateView.as_view(), name='toolbox-create'),
   
   #user actions

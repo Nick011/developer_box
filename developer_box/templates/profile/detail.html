@@ -2,15 +2,17 @@
 {% load staticfiles %}
 
 {% block main %}
-{% include "includes/sidebar.html" with buckets=buckets user=profile.user %}
+{% include "includes/sidebar.html"  %}
 
 <!-- .aside -->
 <aside class="bg-light lter">
 	<section class="vbox">
 		<header class="bg-light dker header clearfix">
+      {% if user.username %}
 			<div class="btn-group pull-right">
 				<button class="btn btn-success btn-sm pull-right">Add New To Toolbox<i class="icon-plus"></i></button>
 			</div>
+      {% endif %}
 			<div class="btn-toolbar">
 				<h4>All Results</h4>    
 			</div>

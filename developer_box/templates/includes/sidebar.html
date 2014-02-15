@@ -8,9 +8,9 @@
 						<img src="{% static 'images/nick.jpg' %}" class="img-circle">
 					</a>
 					<div class="clear">
-						<div class="h3 m-t-xs m-b-xs text-info">@{{ user }}</div>
+						<div class="h3 m-t-xs m-b-xs text-info">@{{ profile.user }}</div>
 						<small class="text-muted"><i class="icon-map-marker"></i> Tampa, FL</small>
-					</div>                
+					</div>
 				</div>
 				<div class="panel wrapper">
 					<div class="row">
@@ -40,9 +40,35 @@
 
 						<section class="vbox">
 							<header class="">
-								<a href="#add-bucket" data-toggle="modal" class="btn btn-success btn-large">Add New Bucket<i class="icon-plus"></i></a>
-								<button class="btn btn-icon btn-default btn-sm pull-right visible-xs m-r-xs" data-toggle="class:show" data-target="#mail-nav"><i class="icon-reorder"></i></button>
-								<p class="h4"></p>
+								{% if user == profile.user %}
+								<a href="#add-bucket" data-toggle="modal" class="btn btn-success btn-large">
+									Add New Bucket<i class="icon-plus"></i>
+								</a>
+								{% else %}
+									{% if user.username %}
+										<div class="btn-group btn-group-justified m-b">
+		                  <a class="btn btn-success btn-rounded" data-toggle="button">
+		                  	{% if user in profile.user.following.follower.all %}
+		                    <span class="text">
+		                      <i class="icon-eye-open"></i> Follow
+		                    </span>
+		                    {% else %}
+		                    <span class="text">
+		                      <i class="icon-eye-open"></i> Following
+		                    </span>
+		                    {% endif %}
+		                  </a>
+		                </div>
+		              {% else %}
+		              	<div class="btn-group btn-group-justified m-b">
+		                  <a href="{% url 'registration_register' %}" class="btn btn-success btn-rounded">
+		                    <span class="text">
+		                      <i class="icon-eye-open"></i> Follow
+		                    </span>
+		                  </a>
+		                </div>
+		              {% endif %}
+                {% endif %}
 							</header>
 							<section>
 
@@ -54,7 +80,7 @@
 
 										{% for bucket in buckets %}
 										<li>
-											<a href="{% url 'bucket-detail' bucket.user.username bucket.id bucket.slug %}">
+											<a href="#">
 												{# TODO: needs {{ bucket.color }} in the icon class #}
 												<i class="icon-circle text-success pull-right m-t-xs"></i>
 												{{ bucket.title }}
