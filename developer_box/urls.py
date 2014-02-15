@@ -32,5 +32,6 @@ urlpatterns = patterns('',
   url(r'^accounts/profile/$', ProfileEditView.as_view(), name='profile-edit'),
   url(r'^follow/$', FollowView.as_view(), name='follow'),
 
+  url(r'^(?P<username>[\w-]+)/(?P<bucket_slug>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail'),
   url(r'^(?P<username>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail')
 )

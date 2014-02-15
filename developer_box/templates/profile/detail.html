@@ -19,7 +19,7 @@
 		</header>            
 		<section class="scrollable hover">
 			<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-alt list-group-lg">
-				{% for item in recently_created %}
+				{% for item in user_items %}
           <li class="list-group-item">
             <a href="{% url 'profile-detail' item.user %} " class="thumb-xs pull-left m-r-sm">
 	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">

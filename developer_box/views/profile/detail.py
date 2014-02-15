@@ -12,10 +12,16 @@ class ProfileDetailView(DetailView):
 		return get_object_or_404(Profile.objects.select_related(), user__username=username)
 
 	def get_context_data(self, **kwargs):
-		#user = self.request.user
+		bucket_slug = self.kwargs.get('bucket_slug', None)
 		context = super(ProfileDetailView, self).get_context_data(**kwargs)
 		user = context['profile'].user
-		context['user_items'] = user.item_set.all()
+
+		#user with multiple buckets of same slug needs to be handled here!
+		if bucket_slug:
+			context['user_items'] = Item.objects.filter(bucket__user=user, bucket__slug=bucket_slug)
+		else:
+			context['user_items'] = user.item_set.all()
+
 		context['buckets'] = user.bucket_set.all()
 		context['recently_created'] = Item.objects.order_by('created_at').select_related('tag')[:20]
 		context['follower_count'] = Follower.objects.filter(user=user).count()
