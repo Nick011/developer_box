@@ -2,16 +2,16 @@ from django.views.generic import UpdateView
 from developer_box.models import Profile, Item, Follower
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
+from developer_box.mixins import LoginRequired
 
-class ProfileEditView(UpdateView):
+class ProfileEditView(LoginRequired, UpdateView):
 	template_name = "profile/edit.html"
 	context_object_name = "profile"
 	model = Profile
 	success_url = '/accounts/profile'
 
 	def get_object(self):
-		username = self.request.user.username
-		return get_object_or_404(Profile.objects.select_related(), user__username=username)
+		return Profile.objects.get_or_create(user=self.request.user)
 
 	def get_context_data(self, **kwargs):
 		user = self.request.user

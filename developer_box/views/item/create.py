@@ -21,4 +21,3 @@ class ItemCreateView(LoginRequired, CreateView):
 		item.save()
 		return redirect(item.get_url())
 
-
