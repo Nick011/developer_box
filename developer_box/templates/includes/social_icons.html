@@ -22,4 +22,15 @@
   <a href="{{ profile.linkedin }}" target="_blank" title="LinkedIn" class="btn btn-rounded btn-info btn-icon">
     <i class="icon-linkedin"></i>
   </a>
+  {% endif %}
+  {% if profile.stackoverflow %}
+  <a href="{{ profile.stackoverflow }}" target="_blank" title="Website" class="btn btn-rounded btn-warning btn-icon">
+    <i class="icon-rss"></i>
+  </a>
+  {% endif %}
+  {% if profile.github %}
+  <a href="{{ profile.github }}" target="_blank" title="Website" class="btn btn-rounded btn-warning btn-icon">
+    <i class="icon-rss"></i>
+  </a>
+  {% endif %}
 {% endif %}
