@@ -9,16 +9,6 @@
 
     <header class="header b-b bg-white">
       <div class="input-group input-s pull-right m-t-sm">
-        <span class="input-group-addon input-sm"><i class="icon-search"></i></span>
-        <input type="text" class="form-control input-sm" id="search-note" placeholder="search">
-      </div>
-      <div class="btn-group pull-left">
-        <a href="{% url 'home' %}" type="button" class="btn btn-sm btn-white"> 
-          <i class="icon-chevron-left"></i> Back
-        </a>
-      </div>
-
-      <div class="btn-group pull-right">
         {% if user.username %}
         <a href="{% url 'item-create' %}" class="btn btn-success btn-sm pull-right" data-toggle="modal">
           New Code<i class="icon-plus"></i>
@@ -28,6 +18,16 @@
           New Code<i class="icon-plus"></i>
         </a>
         {% endif %}
+
+        <span class="input-group-addon input-sm"><i class="icon-search"></i></span>
+        <form action="{% url 'item-list' %}" method="get" name="search_items" id="search_items">
+          <input type="text" class="form-control input-sm" name="q" id="search-note" placeholder="search">
+        </form>
+      </div>
+      <div class="btn-group pull-left">
+        <a href="{% url 'home' %}" type="button" class="btn btn-sm btn-white"> 
+          <i class="icon-chevron-left"></i> Back
+        </a>
       </div>
     </header>
 
