@@ -10,3 +10,4 @@ class Follower(models.Model):
 
 	def __unicode__(self):
 		return 'Followers'
+

@@ -68,7 +68,7 @@
 		                </div>
 		              {% else %}
 		              	<div class="btn-group btn-group-justified m-b">
-		                  <a href="{% url 'registration_register' %}" class="btn btn-success btn-rounded">
+		                  <a href="{% url 'registration_register' %}" id="btn_follow" class="btn btn-success btn-rounded" data-user-id="{{ profile.user.id }}">
 		                    <span class="text">
 		                      <i class="icon-eye-open"></i> Follow
 		                    </span>
