@@ -7,3 +7,4 @@ admin.site.register(Comment)
 admin.site.register(Tag)
 admin.site.register(Profile)
 admin.site.register(Follower)
+

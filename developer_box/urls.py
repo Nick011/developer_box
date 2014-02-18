@@ -1,17 +1,35 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin, auth
 from views import *
+from rest_api import *
+
+from django.conf.urls import patterns, url, include
+from rest_framework import routers
+
 
 admin.autodiscover()
 
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register('api/users', UserViewSet)
+router.register('api/groups', GroupViewSet)
+router.register('api/followers', FollowerViewSet)
+router.register('api/buckets', BucketViewSet)
+router.register('api/items', ItemViewSet)
+
 urlpatterns = patterns('',
+  #include api
+  url(r'', include(router.urls)),
+
   # Examples:
   # url(r'^$', 'developer_box.views.home', name='home'),
   # url(r'^blog/', include('blog.urls')),
   url(r'^item/comments/', include('django.contrib.comments.urls')),
 
+  #installed apps
   url(r'^admin/', include(admin.site.urls)),
   url(r'^accounts/', include('registration.backends.default.urls')),
+  url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
   
   #url(r'^$', IndexView.as_view(), name='home'),
   url(r'^$', ItemListView.as_view(), name='home'),
@@ -33,5 +51,9 @@ urlpatterns = patterns('',
   url(r'^follow/$', FollowView.as_view(), name='follow'),
 
   url(r'^(?P<username>[\w-]+)/(?P<bucket_slug>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail'),
-  url(r'^(?P<username>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail')
+  url(r'^(?P<username>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail'),
+
+  #following
+
+  
 )

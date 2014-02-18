@@ -55,12 +55,14 @@
 		                  <a class="btn btn-success btn-rounded" data-toggle="button">
 		                  	{% if user in profile.user.following.follower.all %}
 		                    <span class="text">
-		                      <i class="icon-eye-open"></i> Follow
-		                    </span>
-		                    {% else %}
-		                    <span class="text">
 		                      <i class="icon-eye-open"></i> Following
 		                    </span>
+		                    {% else %}
+		                    <a href="{% url 'follow' %}">
+				                  <span class="text">
+				                    <i class="icon-eye-closed"></i> Follow
+				                  </span>
+		                    </a>
 		                    {% endif %}
 		                  </a>
 		                </div>
