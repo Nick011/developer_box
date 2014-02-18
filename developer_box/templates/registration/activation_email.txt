@@ -1,0 +1,5 @@
+Codebeaker
+\n\n Thank you for registering with Codebeaker!
+\n\n Confirm your accoutn here: {% url 'registration_activate' activation_key %}
+\n\n Have a nice day!
+\n The Codebeaker Team
