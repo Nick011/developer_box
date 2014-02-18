@@ -15,7 +15,7 @@ class Item(models.Model):
 	title = models.CharField(max_length=75, blank=False, null=False)
 	description = models.TextField(blank=False, null=False)
 	script = models.TextField(blank=False, null=False)
-	slug = models.SlugField(blank=False, null=False)
+	slug = models.SlugField(blank=True, null=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	last_updated_at = models.DateTimeField(auto_now=True, auto_now_add=True)
 	last_viewed_at = models.DateTimeField(auto_now=True, auto_now_add=True)

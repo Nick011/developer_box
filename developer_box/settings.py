@@ -106,8 +106,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
-
 
 STATICFILES_FINDERS = (
   'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -120,16 +118,15 @@ LOGIN_REDIRECT_URL = '/accounts/profile'
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-# Static asset configuration
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )
 
-if not DEBUG:
+try:
+  from local_settings import *
+except ImportError:
+  #PRODUCTION SETTINGS
+  #static file storage and service
   AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
   AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
   AWS_QUERYSTRING_AUTH = True
@@ -139,6 +136,7 @@ if not DEBUG:
   S3_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
   STATIC_URL = S3_URL
   COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+  #email service
   EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
   EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
@@ -148,7 +146,7 @@ if not DEBUG:
   # Parse database configuration from $DATABASE_URL
   import dj_database_url
   DATABASES['default'] =  dj_database_url.config()
-	# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+  # Honor the 'X-Forwarded-Proto' header for request.is_secure()
   SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 

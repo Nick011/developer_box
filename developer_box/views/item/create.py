@@ -7,7 +7,7 @@ from developer_box.mixins import LoginRequired
 class ItemCreateView(LoginRequired, CreateView):
 	template_name = 'item/create.html'
 	model = Item
-	fields = ['tag', 'bucket', 'title', 'description', 'script']
+	exclude = ['user', 'slug']
 
 	def get_context_data(self, **kwargs):
 		context = super(ItemCreateView, self).get_context_data(**kwargs)
@@ -16,7 +16,7 @@ class ItemCreateView(LoginRequired, CreateView):
 		return context
 
 	def form_valid(self, form):
-		item = form.save(commit=False)
+		item = form.save()
 		item.user = self.request.user
 		item.save()
 		return redirect(item.get_url())
