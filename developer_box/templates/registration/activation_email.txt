@@ -1,5 +1,8 @@
 Codebeaker
-\n\n Thank you for registering with Codebeaker!
-\n\n Confirm your accoutn here: http://codebeaker.herokuapp.com{% url 'registration_activate' activation_key %}
-\n\n Have a nice day!
-\n The Codebeaker Team
+
+Thank you for registering with Codebeaker!
+
+Confirm your accoutn here: http://codebeaker.herokuapp.com{% url 'registration_activate' activation_key %}
+
+Have a nice day!
+The Codebeaker Team
