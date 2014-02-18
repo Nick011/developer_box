@@ -36,7 +36,7 @@
 	{% include "includes/footer.html" %}
 
 
-  {% compress js %}
+  {# compress js #}
   <script src="{% static 'js/prettify.js' %}"></script>
   <!--[if lt IE 9]>
     <script src="{% static 'js/ie/respond.min.js' %}" cache="false"></script>
@@ -86,7 +86,7 @@
   </script>
 
   {% block extra_js %}{% endblock %}
-  {% endcompress %}
+  {# endcompress #}
 
 </body>
 </html>

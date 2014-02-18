@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
 	{% endcompress %}
 
-	{% compress js %}
+	{# compress js #}
   <!--[if lt IE 9]>
     <script src="{% static 'js/ie/respond.min.js' %}" cache="false"></script>
     <script src="{% static 'js/ie/html5.js' %}" cache="false"></script>
@@ -32,7 +32,7 @@
 	<script src="{% static 'js/app.js' %}"></script>
 	<script src="{% static 'js/app.plugin.js' %}"></script>
 	<script src="{% static 'js/app.data.js' %}"></script>
-	{% endcompress %}
+	{# endcompress #}
 </head>
 <body>
 	<section id="content" class="m-t-lg wrapper-md animated fadeInDown">
