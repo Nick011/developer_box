@@ -11,15 +11,15 @@ admin.autodiscover()
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register('api/users', UserViewSet)
-router.register('api/groups', GroupViewSet)
-router.register('api/followers', FollowerViewSet)
-router.register('api/buckets', BucketViewSet)
-router.register('api/items', ItemViewSet)
+router.register('users', UserViewSet)
+router.register('groups', GroupViewSet)
+router.register('followers', FollowerViewSet)
+router.register('buckets', BucketViewSet)
+router.register('items', ItemViewSet)
 
 urlpatterns = patterns('',
   #include api
-  url(r'', include(router.urls)),
+  url(r'api/', include(router.urls)),
 
   # Examples:
   # url(r'^$', 'developer_box.views.home', name='home'),
