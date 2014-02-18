@@ -71,18 +71,49 @@
   <script src="{% static 'js/wysiwyg/demo.js' %}" cache="false"></script>
 
   <script>
+    //this will surely need to be fixed... gross.
     $(function(){
+
+      //syntax highlighting
       PR.prettyPrint();
       $('a#copy-script').zclip({
         path:'js/clipboard/ZeroClipboard.swf',
         copy:$('pre#script').text()
       });
-
       $('.prettyprint').on('keyup', function() {
-        //not working, supposed to re-render pretty printed css.
         PR.prettyPrint();
       });
+
+      //ajax following
+      $('#btn_follow').on('click', function() {
+        var self = $(this);
+        var data = {
+            'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
+            'user': {{ user.id }},
+            'following': {{ profile.user.id }}
+          }
+        console.log(data);
+        $.ajax({
+          url: '/api/followers/',
+          method: 'post',
+          data: data,
+          success: function(res) {
+            console.log('success');
+            console.log(res);
+            self
+              .find('i').removeClass('icon-eye-close').addClass('icon-eye-open')
+              .next('.btn_txt').html('Following');
+          },
+          error: function(res) {
+            console.log('error');
+            console.log(res);
+          }
+        });
+      });
+
     });
+
+
   </script>
 
   {% block extra_js %}{% endblock %}

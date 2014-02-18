@@ -67,30 +67,5 @@
 </section>
 <!-- /.vbox -->
 </section>
-{% block extra_js %}
-<script>
-$(function() {
-	$('#btn_follow').on('click', function() {
-		$.ajax({
-			url: '/api/followers'
-			method: 'post',
-			data: {
-				'csrfmiddlewaretoken': $("input[value='csrfmiddlewaretoken']").val(),
-				'user': {{ user.id }},
-				'following': {{ profile.user.id }}
-			},
-			success: function(res) {
-				console.log('success');
-				console.log(res);
-			},
-			error: function(res) {
-				console.log('error');
-				console.log(error);
-			}
-		});
-	});
-});
-</script>
-{% endblock %}
 
 {% endblock %}

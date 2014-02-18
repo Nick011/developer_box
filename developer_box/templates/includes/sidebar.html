@@ -52,25 +52,26 @@
 								{% else %}
 									{% if user.username %}
 										<div class="btn-group btn-group-justified m-b">
-		                  <a class="btn btn-success btn-rounded" data-toggle="button">
+		                  <a class="btn btn-success btn-rounded">
 		                  	{% if user in profile.user.following.follower.all %}
-		                    <span class="text">
-		                      <i class="icon-eye-open"></i> Following
-		                    </span>
+			                    <span class="text">
+			                      <i class="icon-eye-open"></i>
+			                      <span class="btn_txt">Following</span>
+			                    </span>
 		                    {% else %}
-		                    <a href="{% url 'follow' %}">
-				                  <span class="text">
-				                    <i class="icon-eye-closed"></i> Follow
+				                  <span id="btn_follow" class="text">
+					                    <i class="icon-eye-close"></i>
+					                    <span class="btn_txt">Follow</span>
 				                  </span>
-		                    </a>
 		                    {% endif %}
 		                  </a>
 		                </div>
 		              {% else %}
 		              	<div class="btn-group btn-group-justified m-b">
-		                  <a href="{% url 'registration_register' %}" id="btn_follow" class="btn btn-success btn-rounded" data-user-id="{{ profile.user.id }}">
+		                  <a href="{% url 'registration_register' %}" class="btn btn-success btn-rounded" data-user-id="{{ profile.user.id }}">
 		                    <span class="text">
-		                      <i class="icon-eye-open"></i> Follow
+		                      <i class="icon-eye-open"></i>
+		                      <span class="btn_txt">Follow</span>
 		                    </span>
 		                  </a>
 		                </div>
@@ -105,3 +106,5 @@
 			</section>
 		</aside>
 <!-- /.aside -->
+
+
