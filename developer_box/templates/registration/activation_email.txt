@@ -1,1 +1,4 @@
-Thank you for registering with Developer Box!
+<h1>Codebeaker</h1>
+<p>Thank you for registering with Codebeaker!</p>
+<p><a href="{% url 'registration-actiave' activation_key %}" target="_blank">Confirm Registration</a></p>
+<p>Have a nice day! <br> The Codebeaker Team</p>

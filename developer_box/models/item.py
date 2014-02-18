@@ -39,6 +39,8 @@ class Item(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.sript = self.script.strip()
+		self.description = self.description.strip()
+		self.title = self.title.strip()
 		self.slug = slugify(self.title)
 
 		super(Item, self).save(*args, **kwargs)
