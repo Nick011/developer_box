@@ -15,11 +15,13 @@
 			</div>
 		</header>            
 		<section class="scrollable hover">
-			<form action="" method="post" class="panel-body">
-				{% csrf_token %}
-				{{ form|as_template }}
-				<button type="submit" class="btn btn-info">Save</button>
-			</form>
+			<div class="panel-body">
+				<form action="" method="post" class="form-horizontal">
+					{% csrf_token %}
+					{{ form|as_template }}
+					<button type="submit" class="btn btn-info">Save</button>
+				</form>
+			</div>
 		</section>
 
 

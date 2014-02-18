@@ -8,11 +8,17 @@
 <aside class="bg-light lter">
 	<section class="vbox">
 		<header class="bg-light dker header clearfix">
-      {% if user.username %}
 			<div class="btn-group pull-right">
-				<a href="#add-bucket" class="btn btn-success btn-sm pull-right" data-toggle="modal">Add New To Toolbox<i class="icon-plus"></i></a>
+				{% if user.username %}
+				<a href="{% url 'item-create' %}" class="btn btn-success btn-sm pull-right" data-toggle="modal">
+					New Code<i class="icon-plus"></i>
+				</a>
+				{{ else }}
+				<a href="{% url 'registration_register' %}" class="btn btn-success btn-sm pull-right" data-toggle="modal">
+					New Code<i class="icon-plus"></i>
+				</a>
+      	{% endif %}
 			</div>
-      {% endif %}
 			<div class="btn-toolbar">
 				<h4>All Results</h4>    
 			</div>
