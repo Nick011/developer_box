@@ -1,6 +1,7 @@
 from django.views.generic import DetailView
 from developer_box.models import Profile, Item, Follower
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 #TODO: CONSOLIDATE FOLLOWERS AND FOLLOWING AND MAYBE PROFILE DETAIL
 class ProfileDetailView(DetailView):
@@ -16,10 +17,15 @@ class ProfileDetailView(DetailView):
 		bucket_slug = self.kwargs.get('bucket_slug', None)
 		context = super(ProfileDetailView, self).get_context_data(**kwargs)
 		user = context['profile'].user
+		query = self.request.GET.get('q', None)
 
 		#user with multiple buckets of same slug needs to be handled here!
-		if bucket_slug:
-			context['user_items'] = Item.objects.filter(bucket__user=user, bucket__slug=bucket_slug)
+		if bucket_slug and query:
+			context['user_items'] = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query), bucket__user=user, bucket__slug=bucket_slug)
+		elif query:
+			context['user_items'] = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+		elif bucket_slug:
+			context['user_items'] = Item.objects.filter(bucket__slug=bucket_slug, user=user)
 		else:
 			context['user_items'] = user.item_set.all()
 

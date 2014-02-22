@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block main %}
-{% include "includes/sidebar.html"  %}
+{% include "includes/sidebar.html" %}
 
 <!-- .aside -->
 <aside class="bg-light lter">
@@ -48,16 +48,7 @@
 			</ul>
 		</section>
 
-		<footer class="footer b-t bg-white-only">
-			<form class="m-t-sm">
-				<div class="input-group">
-					<input type="text" class="input-sm form-control input-s-sm" placeholder="Search Your Toolbox...">
-					<div class="input-group-btn">
-						<button class="btn btn-sm btn-white"><i class="icon-search"></i></button>
-					</div>
-				</div>
-			</form>
-		</footer>
+		{% include "includes/profile_search.html" %}
 	</section>
 </aside>
 <!-- /.aside -->

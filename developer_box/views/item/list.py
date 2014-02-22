@@ -10,8 +10,8 @@ class ItemListView(ListView):
 	paginate_by = 15
 
 	def get_queryset(self):
-		query = self.query = self.request.GET.get('q', '')
-		tag = self.tag = self.request.GET.get('tag', '')
+		query = self.query = self.request.GET.get('q', None)
+		tag = self.tag = self.request.GET.get('tag', None)
 		if query and tag:
 			items = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query), tag=tag)
 		elif query:

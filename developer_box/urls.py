@@ -46,16 +46,14 @@ urlpatterns = patterns('',
 
   #url(r'^toolbox/create/$', ToolboxCreateView.as_view(), name='toolbox-create'),
   
-  #user actions
-  url(r'^accounts/profile/$', ProfileEditView.as_view(), name='profile-edit'),
+  #follower actions
   url(r'^follow/$', FollowAddView.as_view(), name='follow'),
   url(r'^(?P<username>[\w-]+)/followers/$', FollowersView.as_view(), name='followers'),
   url(r'^(?P<username>[\w-]+)/following/$', FollowingView.as_view(), name='following'),
 
+  #profile actions
+  url(r'^accounts/profile/$', ProfileEditView.as_view(), name='profile-edit'),
   url(r'^(?P<username>[\w-]+)/(?P<bucket_slug>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail'),
   url(r'^(?P<username>[\w-]+)/$', ProfileDetailView.as_view(), name='profile-detail'),
 
-  #following
-
-  
 )
