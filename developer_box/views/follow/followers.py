@@ -1,20 +1,22 @@
-from django.views.generic import DetailView
-from developer_box.models import Profile, Item, Follower
-from django.shortcuts import get_object_or_404
+from django.views.generic import ListView
+from developer_box.models import Follower, Item, Profile
+from django.db.models import Count
+from django.db.models import Q
 
 #TODO: CONSOLIDATE FOLLOWERS AND FOLLOWING AND MAYBE PROFILE DETAIL
-class ProfileDetailView(DetailView):
-	template_name = 'profile/detail.html'
-	context_object_name = 'profile'
-	model = Profile
+class FollowersView(ListView):
+	template_name = 'follow/followers.html'
+	context_object_name = 'follower_list'
+	model = Follower
+	paginate_by = 15
 
-	def get_object(self):
-		username = self.kwargs.get('username', None)
-		return get_object_or_404(Profile.objects.select_related(), user__username=username)
+	def get_queryset(self):
+		return Follower.objects.filter(user__username=self.kwargs.get('username', None))
 
 	def get_context_data(self, **kwargs):
 		bucket_slug = self.kwargs.get('bucket_slug', None)
-		context = super(ProfileDetailView, self).get_context_data(**kwargs)
+		context = super(FollowersView, self).get_context_data(**kwargs)
+		context['profile'] = Profile.objects.get(user__username=self.kwargs.get('username', None))
 		user = context['profile'].user
 
 		#user with multiple buckets of same slug needs to be handled here!

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block main %}
+{% include "includes/sidebar.html"  %}
+
+<!-- .aside -->
+<aside class="bg-light lter">
+	<section class="vbox">
+		<header class="bg-light dker header clearfix">
+			<div class="btn-group pull-right">
+				{% if user.username %}
+				<a href="{% url 'item-create' %}" class="btn btn-success btn-sm pull-right" data-toggle="modal">
+					New Code<i class="icon-plus"></i>
+				</a>
+				{% else %}
+				<a href="{% url 'registration_register' %}" class="btn btn-success btn-sm pull-right" data-toggle="modal">
+					New Code<i class="icon-plus"></i>
+				</a>
+      	{% endif %}
+			</div>
+			<div class="btn-toolbar">
+				<h4>All Results</h4>    
+			</div>
+		</header>            
+		<section class="scrollable hover">
+			<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-alt list-group-lg">
+				{% for follower in following_list %}
+          <li class="list-group-item">
+            <a href="{% url 'profile-detail' follower.user %}" class="clear">
+	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
+	            <!--
+							<img src="{{ follower.user.profile.image.url }}" class="img-circle">
+							-->
+							<strong class="block">{{ follower.user }}</strong>
+	          </a>
+          </li>
+        {% endfor %}
+			</ul>
+		</section>
+
+		<footer class="footer b-t bg-white-only">
+			<form class="m-t-sm">
+				<div class="input-group">
+					<input type="text" class="input-sm form-control input-s-sm" placeholder="Search Your Toolbox...">
+					<div class="input-group-btn">
+						<button class="btn btn-sm btn-white"><i class="icon-search"></i></button>
+					</div>
+				</div>
+			</form>
+		</footer>
+	</section>
+</aside>
+<!-- /.aside -->
+
+
+</section>
+</section>
+<!-- /.vbox -->
+</section>
+
+{% endblock %}

@@ -20,13 +20,13 @@
 				<div class="panel wrapper">
 					<div class="row">
 						<div class="col-xs-6">
-							<a href="#">
+							<a href="{% url 'followers' profile.user %}">
 								<span class="m-b-xs h3 block">{{ follower_count }}</span>
 								<small class="text-muted">Followers</small>
 							</a>
 						</div>
 						<div class="col-xs-6">
-							<a href="#">
+							<a href="{% url 'following' profile.user %}">
 								<span class="m-b-xs h3 block">{{ following_count }}</span>
 								<small class="text-muted">Following</small>
 							</a>
