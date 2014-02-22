@@ -21,6 +21,7 @@ class ProfileDetailView(DetailView):
 		buckets = user.bucket_set.all()
 
 		#user with multiple buckets of same slug needs to be handled here!
+		#if search query param has been added use it
 		if bucket_slug and query:
 			context['user_items'] = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query), bucket__user=user, bucket__slug=bucket_slug)
 		elif query:
