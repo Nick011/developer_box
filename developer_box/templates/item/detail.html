@@ -150,18 +150,23 @@
         </div>
 
         <div class="col-sm-3">
-          {% if user %}
+          {% if user.username %}
             {% if item.in_box %}
             <a data-toggle="modal" class="btn btn-error btn-lg">
               In Toolbox (yip yip)<i class="icon-plus"></i>
             </a>
             {% else %}
-            <a href="{% url 'registration_register' %}" data-toggle="modal" class="btn btn-success btn-lg">
+            <form action="{% url 'item-add' %}">
+            <a href="#add-toolbox" data-toggle="modal" class="btn btn-success btn-lg" data-toggle="modal">
               Add To Toolbox<i class="icon-plus"></i>
             </a>
             {% endif %}
-            <br><br>
+          {% else %}
+            <a href="{% url 'registration_register' %}" data-toggle="modal" class="btn btn-success btn-lg">
+              Add To Toolbox<i class="icon-plus"></i>
+            </a>
           {% endif %}
+          <br><br>
 
           <h5 class="font-semibold">Stats</h5>
 
