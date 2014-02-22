@@ -1,7 +1,6 @@
-from django.views.generic.edit import FormView, CreateView
-from django import forms
+from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
-from developer_box.models import Item, Tag, Bucket
+from developer_box.models import Item
 from developer_box.mixins import LoginRequired
 
 class ItemCreateView(LoginRequired, CreateView):
