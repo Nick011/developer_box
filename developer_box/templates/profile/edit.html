@@ -8,22 +8,31 @@
 
 <!-- .aside -->
 <aside class="bg-light lter">
+
 	<section class="vbox">
 		<header class="bg-light dker header clearfix">
 			<div class="btn-toolbar">
 				<h4>Profile</h4>    
 			</div>
-		</header>            
-		<section class="scrollable hover">
-			<div class="panel-body">
-				<form action="" method="post" class="form-horizontal">
-					{% csrf_token %}
-					{{ form|as_template }}
-					<button type="submit" class="btn btn-info">Save</button>
-				</form>
+		</header>
+		<br>
+		<div class="col-sm-9">
+			<div class="blog-post">
+				<div class="post-item">
+					<div class="caption wrapper-lg">
+						<section class="scrollable hover">
+							<div class="panel-body">
+								<form action="" method="post" class="form-horizontal">
+									{% csrf_token %}
+									{{ form|as_template }}
+									<button type="submit" class="btn btn-info">Save</button>
+								</form>
+							</div>
+						</section>
+					</div>
+				</div>
 			</div>
-		</section>
-
+		</div>
 
 	</section>
 </aside>

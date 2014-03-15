@@ -31,8 +31,9 @@ urlpatterns = patterns('',
   url(r'^accounts/', include('registration.backends.default.urls')),
   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
   
-  #url(r'^$', IndexView.as_view(), name='home'),
-  url(r'^$', ItemListView.as_view(), name='home'),
+  #begin code beaker urls
+  url(r'^$', ProfileDetailView.as_view(), name='home'),
+  #url(r'^$', ItemListView.as_view(), name='home'),
   
   #item actions
   #url(r'^search/$', ItemListView.as_view(), name='item-list'),

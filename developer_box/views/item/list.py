@@ -21,7 +21,7 @@ class ItemListView(ListView):
 		else:
 			items = Item.objects.all()
 
-		return items
+		return items.order_by('-created_at').select_related()
 
 	def get_context_data(self, **kwargs):
 		context = super(ItemListView, self).get_context_data(**kwargs)

@@ -37,7 +37,6 @@
 
 
   {# compress js #}
-  <script src="{% static 'js/prettify.js' %}"></script>
   <!--[if lt IE 9]>
     <script src="{% static 'js/ie/respond.min.js' %}" cache="false"></script>
     <script src="{% static 'js/ie/html5.js' %}" cache="false"></script>
@@ -46,7 +45,8 @@
 
   <script src="{% static 'js/jquery.min.js' %}"></script>
 
-  <script type="text/javascript" src="{% static 'js/clipboard/jquery.zclip.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/clipboard/jquery.zclip.min.js' %}"></script>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
   <!-- Bootstrap -->
   <script src="{% static 'js/bootstrap.js' %}"></script>
@@ -71,49 +71,36 @@
   <script src="{% static 'js/wysiwyg/demo.js' %}" cache="false"></script>
 
   <script>
-    //this will surely need to be fixed... gross.
-    $(function(){
+  $(function() {
+    var openWin = function(html, name) {
+      var win = window.open('', name);
+      win.document.body.innerHTML = '<pre>' + html + '</pre>';
+      win.focus();
+      return win;
+    };
+    var rawScript = $('.prettyprint').html();
 
+    if (typeof PR !== undefined) {
       //syntax highlighting
       PR.prettyPrint();
+
+      //copy script to clipboard
       $('a#copy-script').zclip({
-        path:'js/clipboard/ZeroClipboard.swf',
+        path:'/static/js/clipboard/ZeroClipboard.swf',
         copy:$('pre#script').text()
       });
+
+      //pretty print when createing new script
       $('.prettyprint').on('keyup', function() {
         PR.prettyPrint();
       });
 
-      //ajax following
-      $('#btn_follow').on('click', function() {
-        var self = $(this);
-        var data = {
-            'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
-            'user': {{ user.id }},
-            'following': {{ profile.user.id }}
-          }
-        console.log(data);
-        $.ajax({
-          url: '/api/followers/',
-          method: 'post',
-          data: data,
-          success: function(res) {
-            console.log('success');
-            console.log(res);
-            self
-              .find('i').removeClass('icon-eye-close').addClass('icon-eye-open')
-              .next('.btn_txt').html('Following');
-          },
-          error: function(res) {
-            console.log('error');
-            console.log(res);
-          }
-        });
+      //TODO: Generate the raw script from the server. This works for now.
+      $('a#raw-script').on('click', function() {
+        openWin(rawScript, 'raw');
       });
-
-    });
-
-
+    }
+  });
   </script>
 
   {% block extra_js %}{% endblock %}

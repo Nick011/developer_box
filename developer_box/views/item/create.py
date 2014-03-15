@@ -10,7 +10,7 @@ class ItemCreateView(LoginRequired, CreateView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ItemCreateView, self).get_context_data(**kwargs)
-		context['recently_created'] = self.model.objects.order_by('created_at')[:5]
+		context['recently_created'] = self.model.objects.order_by('-created_at')[:5]
 		context['similar_results'] = context['recently_created']
 		return context
 

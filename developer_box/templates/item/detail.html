@@ -24,11 +24,13 @@
           <input type="text" class="form-control input-sm" name="q" id="search-note" placeholder="search">
         </form>
       </div>
+      {% comment %}
       <div class="btn-group pull-left">
         <a href="{% url 'home' %}" type="button" class="btn btn-sm btn-white"> 
           <i class="icon-chevron-left"></i> Back
         </a>
       </div>
+      {% endcomment %}
     </header>
 
     <section class="scrollable wrapper">          
@@ -41,22 +43,22 @@
                 <h2 class="post-title"><a href="#">{{ item.title }}</a></h2>
                 <br>
                 <div class="post-sum">
-                  {{ item.description|safe }}
+                  <p>
+                    {{ item.description|safe }}
+                  </p>
                   <br>
 
                   <div class="pull-right">
                     <div class="m-b-sm">
                       <div class="btn-group">
-                        <a type="button" class="btn btn-white">Raw</a>
+                        <a id="raw-script" type="button" class="btn btn-white">Raw</a>
                         <a id="copy-script" type="button" class="btn btn-white">Quick Copy</a>
                       </div>              
                     </div>
                   </div>
 
                   <div class="span12">
-                    <pre id="script" class="prettyprint">
-                      {{ item.script }}
-                    </pre>
+                    <pre id="script" class="prettyprint">{{ item.script }}</pre>
                   </div>
                 </div>
 
@@ -71,12 +73,18 @@
                 <div class="text-muted">
                   <i class="icon-user icon-muted"></i> by <a href="{% url 'profile-detail' item.user %}" class="m-r-sm">{{ item.user }}</a>
                   <i class="icon-time icon-muted"></i> {{ item.created_at|date:'M d, Y' }}
+
+                  {% comment %}
                   <a href="#" class="m-l-sm"><i class="icon-comment-alt icon-muted"></i> {{ item.comments.all|length }} comments</a>
+                  {% endcomment %}
                 </div>
               </div>
             </div>
 
           </div>
+
+
+          {% comment %}
 
           <h4 class="m-t-lg m-b">3 Comments</h4>
           <section class="comment-list block">
@@ -147,13 +155,17 @@
               <button type="submit" class="btn btn-success">Submit comment</button>
             </div>
           </form>
+
+          {% endcomment %}
         </div>
+        
+
 
         <div class="col-sm-3">
           {% if user.username %}
             {% if item.in_box %}
-            <a data-toggle="modal" class="btn btn-error btn-lg">
-              In Toolbox (yip yip)<i class="icon-plus"></i>
+            <a data-toggle="modal" class="btn btn-info btn-lg">
+              On Burner<i class="icon-check"></i>
             </a>
             {% else %}
             <form action="{% url 'item-add' %}">
@@ -172,12 +184,12 @@
 
           <button class="btn btn-white">
             <span class="text">
-              Beta Toolbox Adds: <strong>{{ item.buckets.all|length }}</strong></i> 
+              Beaker Drips: <strong>{{ item.buckets.all|length }}</strong></i> 
             </span>  
           </button>
           <button class="btn btn-white">
             <span class="text">
-              Date Added : <strong>{{ item.created_at|date:'SHORT_DATE_FORMAT' }}</strong></i> 
+              Date Added: <strong>{{ item.created_at|date:'SHORT_DATE_FORMAT' }}</strong></i> 
             </span>
           </button>
           <br><br>
@@ -185,9 +197,11 @@
           <h5 class="font-semibold">About Developer</h5>
           <div class="line line-dashed"></div>
           <div class="m-b-lg">
+            {% comment %}
             <span class="pull-left thumb-sm avatar m-r-sm m-t-xs">
               <img src="{% static 'images/nick.jpg' %}" class="img-circle">
             </span>
+            {% endcomment %}
             <p class="clear text-sm">
               <a href="{% url 'profile-detail' item.user %}" class="text-info">@{{ item.user }}</a> : {{ profile.bio }}
             </p>
@@ -199,7 +213,7 @@
             {% include "includes/social_icons.html" with profile=profile %}
           </div>
 
-          <h5 class="font-semibold">Similar Results (TODO)</h5>
+          <h5 class="font-semibold">Recent Beakers</h5>
           <div class="line line-dashed"></div>
 
           <ul class="list-unstyled m-b-lg">

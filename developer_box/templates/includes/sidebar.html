@@ -4,12 +4,14 @@
 		<section class="scrollable">
 			<div class="wrapper">
 				<div class="clearfix m-b">
+					{% comment %}
 					<a href="#" class="pull-left thumb m-r">
 						<img src="{% static 'images/nick.jpg' %}" class="img-circle">
 					</a>
-					<div class="clear">
+					{% endcomment %}
+					<div class="clear text-center">
 						<div class="h3 m-t-xs m-b-xs text-info">
-							<a href="{% url 'profile-detail' profile.user.username %}">@{{ profile.user }}</a>
+							@{{ profile.user }}
 						</div>
 						<small class="text-muted"><i class="icon-map-marker"></i> Tampa, FL</small>
 						{% if user == profile.user %}
@@ -83,7 +85,7 @@
 								<section id="mail-nav" class="hidden-xs">
 									<ul class="nav nav-pills nav-stacked no-radius m-t-sm">
 										<li class="padder dk text-sm l-h-2x">
-											<p>Toolbox</p>
+											<p>Chemistry Set</p>
 										</li>
 
 										{% for bucket in buckets %}

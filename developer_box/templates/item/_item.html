@@ -1,7 +1,7 @@
 {% for item in items %}
   <li>
   <a href="{% url 'item-detail' item.id item.slug %}"
-  <p>{{ item.title }}: {{ item.description }}</p>
+  <p>{{ item.title|title }}: {{ item.description }}</p>
   <small class="block text-muted"><i class="icon-time"></i>{{ item.created_at|timesince }}</small>
   {% if not forloop.last %}
   <div class="line"></div>

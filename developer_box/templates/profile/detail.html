@@ -27,22 +27,31 @@
 			<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-alt list-group-lg">
 				{% for item in user_items %}
           <li class="list-group-item">
+
+          	{% comment %}
             <a href="{% url 'profile-detail' item.user %} " class="thumb-xs pull-left m-r-sm">
 	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
 	            <!--
 							<img src="{{ user.profile.image.url }}" class="img-circle">
 	            -->
 	          </a>
-            <a href="{% url 'item-detail' item.id item.slug %}" class="clear">
-              <small class="pull-right">
+	          {% endcomment %}
+
+	          <div class="clear">
+	            <a href="{% url 'item-detail' item.id item.slug %}">
+	              <strong>{{ item.title|title }}:</strong>
+	              {# use CSS to do this in the future! #}
+	              <small>{{ item.description|truncatewords:28 }}</small>
+	            </a>
+	            <small class="pull-right">
               	{# need different classes for dif color dots #}
                 {% for tag in item.tag.all %}
-                <span class="label label-sm bg-danger text-uc">{{ tag.name }}</span>
+                <a href="{% url 'item-list' %}?tag={{ tag.id }}">
+                	<span class="label label-sm bg-danger text-uc">{{ tag.name }}</span>
+                </a>
                 {% endfor %}
               </small>
-              <strong class="block">{{ item.title }}</strong>
-              <small>{{ item.description }}</small>
-            </a>
+            </div>
           </li>
         {% endfor %}
 			</ul>
@@ -59,4 +68,37 @@
 <!-- /.vbox -->
 </section>
 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(function() {
+	//ajax following
+	$('#btn_follow').on('click', function() {
+	  var self = $(this);
+	  var data = {
+	      'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
+	      'user': {{ user.id }},
+	      'following': {{ profile.user.id }}
+	    };
+	  console.log(data);
+	  $.ajax({
+	    url: '/api/followers/',
+	    method: 'post',
+	    data: data,
+	    success: function(res) {
+	      console.log('success');
+	      console.log(res);
+	      self
+	        .find('i').removeClass('icon-eye-close').addClass('icon-eye-open')
+	        .next('.btn_txt').html('Following');
+	    },
+	    error: function(res) {
+	      console.log('error');
+	      console.log(res);
+	    }
+	  });
+	});
+});
+</script>
 {% endblock %}
