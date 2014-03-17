@@ -28,10 +28,12 @@
 				{% for follower in following_list %}
           <li class="list-group-item">
             <a href="{% url 'profile-detail' follower.following %}" class="clear">
+            	{% comment %}
 	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
 	            <!--
 							<img src="{{ follower.user.profile.image.url }}" class="img-circle">
 							-->
+							{% endcomment %}
 							<strong class="block">{{ follower.following }}</strong>
 	          </a>
           </li>
