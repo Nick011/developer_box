@@ -85,10 +85,15 @@
       PR.prettyPrint();
 
       //copy script to clipboard
-      $('a#copy-script').zclip({
-        path:'/static/js/clipboard/ZeroClipboard.swf',
-        copy:$('pre#script').text()
-      });
+      $('a#copy-script')
+        .zclip({
+          path: '/static/js/clipboard/ZeroClipboard.swf',
+          copy: $('pre#script').text()
+        })
+        .on('click', function() {
+          var btn = $(this);
+          btn.removeClass('btn-white').addClass('btn-success');
+        });
 
       //pretty print when createing new script
       $('.prettyprint').on('keyup', function() {

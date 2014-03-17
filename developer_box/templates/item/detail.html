@@ -62,12 +62,6 @@
                   </div>
                 </div>
 
-                <div class="tags m-b-lg">
-                  {% for tag in item.tags.all %}
-                  <a href="#" class="label bg_success">{{ tag }}</a>
-                  {% endfor %}
-                </div>
-
                 <div class="line line-lg"></div>
 
                 <div class="text-muted">
@@ -77,6 +71,14 @@
                   {% comment %}
                   <a href="#" class="m-l-sm"><i class="icon-comment-alt icon-muted"></i> {{ item.comments.all|length }} comments</a>
                   {% endcomment %}
+
+                  <small class="pull-right">
+                    {% for tag in item.tag.all %}
+                    <a href="{% url 'item-list' %}?tag={{ tag.id }}">
+                      <span class="label label-sm bg-danger text-uc">{{ tag.name }}</span>
+                    </a>
+                    {% endfor %}
+                  </small>
                 </div>
               </div>
             </div>
