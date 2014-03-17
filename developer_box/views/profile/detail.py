@@ -13,18 +13,16 @@ class ProfileDetailView(DetailView):
 	def get_object(self):
 		current_user = self.request.user
 		username = self.kwargs.get('username', None)
-		if username:
-			return get_object_or_404(Profile.objects.select_related(), user__username=username)
-		elif current_user:
+		if not username:
 			return current_user.profile
-		else:
-			redirect(reverse('item-list'))
+
+		return get_object_or_404(Profile.objects.select_related(), user__username=username)
 
 	def get_context_data(self, **kwargs):
-		bucket_slug = self.kwargs.get('bucket_slug', None)
 		context = super(ProfileDetailView, self).get_context_data(**kwargs)
-		user = self.request.user
 		profile = context['profile']
+		bucket_slug = self.kwargs.get('bucket_slug', None)
+		user = self.request.user
 		profile_user = profile.user
 		query = self.request.GET.get('q', None)
 

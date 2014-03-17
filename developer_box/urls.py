@@ -32,7 +32,7 @@ urlpatterns = patterns('',
   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
   
   #begin code beaker urls
-  url(r'^$', ProfileDetailView.as_view(), name='home'),
+  url(r'^$', IndexView.as_view(), name='home'),
   #url(r'^$', ItemListView.as_view(), name='home'),
   
   #item actions
