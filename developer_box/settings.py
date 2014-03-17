@@ -73,6 +73,13 @@ MIDDLEWARE_CLASSES = (
   'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'developer_box.backends.auth_backend.UsernameEmailBackend',
+)
+
+
 INTERNAL_IPS = ('127.0.0.1',)
 
 ROOT_URLCONF = 'developer_box.urls'
