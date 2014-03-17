@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from follower import Follower
 
 class Profile(models.Model):
 	user = models.OneToOneField(User)
@@ -19,3 +20,15 @@ class Profile(models.Model):
 
 	def __unicode__(self):
 		return self.user.username
+
+	def is_follower(self, current_user):
+		return Follower.objects.filter(user=current_user, following=self.user).count()
+
+	def buckets(self):
+		return self.user.bucket_set.all()
+
+	def following_count(self):
+		return Follower.objects.filter(user=self.user).count()
+
+	def follower_count(self):
+		return Follower.objects.filter(following=self.user).count()

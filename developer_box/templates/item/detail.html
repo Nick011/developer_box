@@ -172,12 +172,12 @@
             {% else %}
             <form action="{% url 'item-add' %}">
             <a href="#add-toolbox" data-toggle="modal" class="btn btn-success btn-lg" data-toggle="modal">
-              Add To Toolbox<i class="icon-plus"></i>
+              Add To Burner<i class="icon-plus"></i>
             </a>
             {% endif %}
           {% else %}
             <a href="{% url 'registration_register' %}" data-toggle="modal" class="btn btn-success btn-lg">
-              Add To Toolbox<i class="icon-plus"></i>
+              Add To Burner<i class="icon-plus"></i>
             </a>
           {% endif %}
           <br><br>
@@ -186,7 +186,7 @@
 
           <button class="btn btn-white">
             <span class="text">
-              Beaker Drips: <strong>{{ item.buckets.all|length }}</strong></i> 
+              Beaker Drips: <strong>{{ item.bucket.all|length }}</strong></i> 
             </span>  
           </button>
           <button class="btn btn-white">

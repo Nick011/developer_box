@@ -105,6 +105,44 @@
         openWin(rawScript, 'raw');
       });
     }
+
+
+    //ajax following
+    {% if profile %}
+    $('.btn-follow').click(function() {
+      var self = $(this);
+      var data = {
+          'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
+          'user': {{ user.id }},
+          'following': {{ profile.user.id }}
+        };
+      console.log(data);
+      $.ajax({
+        url: '/api/followers/',
+        method: 'post',
+        data: data,
+        success: function(res) {
+          console.log('success');
+          console.log(res);
+          self
+            .removeClass('btn-follow')
+            .find('i')
+            .removeClass('icon-eye-close')
+            .addClass('icon-eye-open')
+            .next('.btn_txt')
+            .html('Following');
+
+          $('.follower-count').html(function() {
+            return parseInt($(this).html()) + 1;
+          })
+        },
+        error: function(res) {
+          console.log('error');
+          console.log(res);
+        }
+      });
+    });
+    {% endif %}
   });
   </script>
 

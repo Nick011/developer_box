@@ -23,13 +23,13 @@
 					<div class="row">
 						<div class="col-xs-6">
 							<a href="{% url 'followers' profile.user %}">
-								<span class="m-b-xs h3 block">{{ follower_count }}</span>
+								<span class="m-b-xs h3 block follower-count">{{ profile.follower_count }}</span>
 								<small class="text-muted">Followers</small>
 							</a>
 						</div>
 						<div class="col-xs-6">
 							<a href="{% url 'following' profile.user %}">
-								<span class="m-b-xs h3 block">{{ following_count }}</span>
+								<span class="m-b-xs h3 block following-count">{{ profile.following_count }}</span>
 								<small class="text-muted">Following</small>
 							</a>
 						</div>
@@ -49,19 +49,19 @@
 							<header class="">
 								{% if user == profile.user %}
 								<a href="#add-bucket" data-toggle="modal" class="btn btn-success btn-large">
-									Add New Bucket<i class="icon-plus"></i>
+									Add Burner<i class="icon-plus"></i>
 								</a>
 								{% else %}
 									{% if user.username %}
-										<div class="btn-group btn-group-justified m-b">
+										<div class="btn-group btn-group-justified m-b {% if not is_following %} btn-follow {% endif %}">
 		                  <a class="btn btn-success btn-rounded">
-		                  	{% if user in profile.user.following.follower.all %}
+		                  	{% if is_following %}
 			                    <span class="text">
 			                      <i class="icon-eye-open"></i>
 			                      <span class="btn_txt">Following</span>
 			                    </span>
 		                    {% else %}
-				                  <span id="btn_follow" class="text">
+				                  <span class="text">
 					                    <i class="icon-eye-close"></i>
 					                    <span class="btn_txt">Follow</span>
 				                  </span>

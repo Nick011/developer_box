@@ -27,12 +27,12 @@
 			<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-alt list-group-lg">
 				{% for follower in following_list %}
           <li class="list-group-item">
-            <a href="{% url 'profile-detail' follower.user %}" class="clear">
+            <a href="{% url 'profile-detail' follower.following %}" class="clear">
 	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
 	            <!--
 							<img src="{{ follower.user.profile.image.url }}" class="img-circle">
 							-->
-							<strong class="block">{{ follower.user }}</strong>
+							<strong class="block">{{ follower.following }}</strong>
 	          </a>
           </li>
         {% endfor %}

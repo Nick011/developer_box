@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block main %}
-{% include "includes/sidebar.html"  %}
+{% include "includes/sidebar.html" with items=recently_created%}
 
 <!-- .aside -->
 <aside class="bg-light lter">
@@ -27,12 +27,14 @@
 			<ul class="list-group no-radius m-b-none m-t-n-xxs list-group-alt list-group-lg">
 				{% for follower in follower_list %}
           <li class="list-group-item">
-            <a href="{% url 'profile-detail' follower.following %}" class="clear">
+            <a href="{% url 'profile-detail' follower.user %}" class="clear">
+            	{% comment %}
 	            <img src="{% static 'images/avatar_default.jpg' %}" class="img-circle">
 	            <!--
 							<img src="{{ follower.following.profile.image.url }}" class="img-circle">
 							-->
-							<strong class="block">{{ follower.following }}</strong>
+							{% endcomment %}
+							<strong class="block">{{ follower.user }}</strong>
 	          </a>
           </li>
         {% endfor %}

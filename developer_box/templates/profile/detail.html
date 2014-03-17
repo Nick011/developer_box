@@ -71,34 +71,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script>
-$(function() {
-	//ajax following
-	$('#btn_follow').on('click', function() {
-	  var self = $(this);
-	  var data = {
-	      'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
-	      'user': {{ user.id }},
-	      'following': {{ profile.user.id }}
-	    };
-	  console.log(data);
-	  $.ajax({
-	    url: '/api/followers/',
-	    method: 'post',
-	    data: data,
-	    success: function(res) {
-	      console.log('success');
-	      console.log(res);
-	      self
-	        .find('i').removeClass('icon-eye-close').addClass('icon-eye-open')
-	        .next('.btn_txt').html('Following');
-	    },
-	    error: function(res) {
-	      console.log('error');
-	      console.log(res);
-	    }
-	  });
-	});
-});
-</script>
+
 {% endblock %}

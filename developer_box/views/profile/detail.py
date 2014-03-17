@@ -23,25 +23,26 @@ class ProfileDetailView(DetailView):
 	def get_context_data(self, **kwargs):
 		bucket_slug = self.kwargs.get('bucket_slug', None)
 		context = super(ProfileDetailView, self).get_context_data(**kwargs)
-		user = context['profile'].user
+		user = self.request.user
+		profile = context['profile']
+		profile_user = profile.user
 		query = self.request.GET.get('q', None)
-		buckets = user.bucket_set.all()
 
 		#user with multiple buckets of same slug needs to be handled here!
 		#if search query param has been added use it
 		if bucket_slug and query:
-			context['user_items'] = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query), bucket__user=user, bucket__slug=bucket_slug)
+			context['user_items'] = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query),
+																									bucket__user=profile_user, bucket__slug=bucket_slug)
 		elif query:
 			context['user_items'] = Item.objects.filter(Q(title__contains=query) | Q(description__contains=query))
 		elif bucket_slug:
 			context['user_items'] = Item.objects.filter(bucket__slug=bucket_slug, bucket__user=user)
 		else:
-			context['user_items'] = Item.objects.filter(bucket__user=user)
+			context['user_items'] = Item.objects.filter(bucket__user=profile_user)
 
 		context['user_items'] = context['user_items'].order_by('-created_at').select_related()[:25]
 
-		context['buckets'] = buckets
-		context['recently_created'] = Item.objects.order_by('created_at').select_related('tag')[:20]
-		context['follower_count'] = Follower.objects.filter(user=user).count()
-		context['following_count'] = Follower.objects.filter(following=user).count()
+		context['buckets'] = profile.buckets()
+		context['recently_created'] = Item.objects.order_by('-created_at').select_related('tag')[:20]
+		context['is_following'] = profile.is_follower(user)
 		return context
