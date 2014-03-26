@@ -22,7 +22,10 @@ class Profile(models.Model):
 		return self.user.username
 
 	def is_follower(self, current_user):
-		return Follower.objects.filter(user=current_user, following=self.user).count()
+		if current_user.is_authenticated():
+			return Follower.objects.filter(user=current_user, following=self.user).exists()
+		else:
+			return False
 
 	def buckets(self):
 		return self.user.bucket_set.all()
