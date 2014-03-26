@@ -87,7 +87,7 @@
       //copy script to clipboard
       $('a#copy-script')
         .zclip({
-          path: '/static/js/clipboard/ZeroClipboard.swf',
+          path: '{% static "/static/js/clipboard/ZeroClipboard.swf" %}',
           copy: $('pre#script').text()
         })
         .on('click', function() {
