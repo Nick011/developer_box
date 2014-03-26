@@ -159,7 +159,7 @@ except ImportError:
   S3_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
   STATIC_URL = S3_URL
   COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-  COMPRESS_OFFLINE = True
+  #COMPRESS_OFFLINE = True
   #email service
   EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
