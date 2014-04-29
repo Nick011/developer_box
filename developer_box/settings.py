@@ -33,7 +33,9 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = []
+
+# Update this later
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -123,8 +125,6 @@ STATICFILES_FINDERS = (
 
 LOGIN_REDIRECT_URL = '/accounts/profile'
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
 
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'developer_box/static'),
@@ -146,10 +146,15 @@ REST_FRAMEWORK = {
 }
 
 try:
+  # create a local settings file for local testing with at least the following
+  # DEBUG = True
+  # TEMPLATE_DEBUG = True
+  # STATIC_ROOT = 'developer_box/static'
+  # STATIC_URL = '/static/'
   from local_settings import *
 except ImportError:
-  #PRODUCTION SETTINGS
-  #static file storage and service
+  # PRODUCTION SETTINGS
+  # static file storage and service
   AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
   AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
   AWS_QUERYSTRING_AUTH = True

@@ -7,6 +7,7 @@ class Follower(models.Model):
 
 	class Meta:
 		app_label = "developer_box"
+		verbose_name = "Followers"
 
 	def __unicode__(self):
 		return 'Followers'

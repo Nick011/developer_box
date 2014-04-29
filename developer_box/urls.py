@@ -33,7 +33,6 @@ urlpatterns = patterns('',
   
   #begin code beaker urls
   url(r'^$', IndexView.as_view(), name='home'),
-  #url(r'^$', ItemListView.as_view(), name='home'),
   
   #item actions
   #url(r'^search/$', ItemListView.as_view(), name='item-list'),
