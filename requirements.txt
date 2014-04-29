@@ -16,8 +16,12 @@ django-threadedcomments==0.9.0
 django-toolbelt==0.0.1
 djangorestframework==2.3.12
 gunicorn==18.0
+oauthlib==0.6.1
 psycopg2==2.5.2
 pystache==0.5.3
+python-openid==2.2.5
+requests==2.2.1
+requests-oauthlib==0.4.0
 six==1.4.1
 sqlparse==0.1.10
 static==1.0.2
