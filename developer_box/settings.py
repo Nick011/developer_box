@@ -127,7 +127,7 @@ LOGIN_REDIRECT_URL = '/accounts/profile'
 
 
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'developer_box/static'),
+  os.path.join(BASE_DIR, 'developer_box/static_files'),
 )
 
 REST_FRAMEWORK = {
@@ -158,7 +158,7 @@ except ImportError:
   # static file storage and service
   AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
   AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-  AWS_QUERYSTRING_AUTH = True
+  AWS_QUERYSTRING_AUTH = False
   AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
   DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
   STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -166,6 +166,7 @@ except ImportError:
   STATIC_URL = S3_URL
   COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
   #COMPRESS_OFFLINE = True
+  COMPRESS_ENABLED = False
   #email service
   EMAIL_HOST = 'smtp.sendgrid.net'
   EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']

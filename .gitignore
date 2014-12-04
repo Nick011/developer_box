@@ -1,5 +1,6 @@
 #### ignore these files ###
 *.sqlite3
+db.*
 *.dmb
 *.zip
 *.db
@@ -9,5 +10,5 @@
 developer_box/local_settings.py
 ENV/
 env/
-staticfiles/
+static/
 developer_box/template_files
